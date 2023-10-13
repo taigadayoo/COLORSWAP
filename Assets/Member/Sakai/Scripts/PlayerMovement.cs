@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -52,5 +53,10 @@ public class PlayerMovement : MonoBehaviour
         {
             this.transform.position = Save.transform.position; 
         }
+        if (other.gameObject.tag == "Door")
+        {
+            SceneManager.LoadScene("Clear");
+        }
     }
+    
 }

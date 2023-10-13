@@ -58,5 +58,19 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene("Clear");
         }
     }
-    
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "MoveStage")
+        {
+            transform.SetParent(col.transform);
+        }
+    }
+
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "MoveStage")
+        {
+            transform.SetParent(null);
+        }
+    }
 }

@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 10f;
     private Rigidbody2D rb;
     private bool isGrounded;
+    [SerializeField]
+    public GameObject Save;
 
     void Start()
     {
@@ -18,7 +20,14 @@ public class PlayerMovement : MonoBehaviour
         // WASDキーによる移動
         float moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-
+        if(moveInput < 0)
+        {
+            this.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        if (moveInput > 0)
+        {
+            this.GetComponent<SpriteRenderer>().flipX = false;
+        }
         // ジャンプ
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -41,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Dead")
         {
-            this.transform.position = new Vector3(-1081, 464,0);
+            this.transform.position = Save.transform.position; 
         }
     }
 }

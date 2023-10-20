@@ -7,17 +7,21 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
     private Rigidbody2D rb;
-    private bool isGrounded;
+    public bool isGrounded = false;
     [SerializeField]
     public GameObject Save;
-
+    public MonoBehaviour targetScript;
+   
     void Start()
     {
+        targetScript.enabled = false;
         rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
+        
+       
         // WASDキーによる移動
         float moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
@@ -32,21 +36,12 @@ public class PlayerMovement : MonoBehaviour
         // ジャンプ
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            Jump();
+            
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        // 地面に接しているか判定
-        isGrounded = true;
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        // 地面から離れたか判定
-        isGrounded = false;
-    }
+   
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Dead")
@@ -56,6 +51,17 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.tag == "Door")
         {
             SceneManager.LoadScene("Clear");
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Flag")
+        {
+            Save = other.gameObject;
+        }
+        if(other.gameObject.tag == "lever")
+        {
+            targetScript.enabled = true;
         }
     }
     void OnCollisionEnter(Collision col)
@@ -72,5 +78,10 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.SetParent(null);
         }
+    }
+    public void Jump()
+    {
+        
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
 }

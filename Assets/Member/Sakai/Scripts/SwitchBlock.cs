@@ -56,7 +56,7 @@ public class SwitchBlock : MonoBehaviour
         while (true)
         {
             hitJudgment = !hitJudgment;
-            Debug.Log(hitJudgment);
+           
             yield return new WaitForSeconds(switchInterval);
         }
        

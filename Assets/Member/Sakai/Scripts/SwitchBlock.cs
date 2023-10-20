@@ -13,12 +13,12 @@ public class SwitchBlock : MonoBehaviour
         First,
         Next
     }
-    public float switchInterval = 3f;
+    public float switchInterval = 2f;
     [SerializeField]
     private Block block;
     void Start()
     {
-        InvokeRepeating("SwitchBlocks", 0f, switchInterval);
+        StartCoroutine(SwitchHitCoroutine());
     }
 
     private void Update()
@@ -50,10 +50,16 @@ public class SwitchBlock : MonoBehaviour
             }
         }
     }
-    private void SwitchBlocks()
+
+     IEnumerator SwitchHitCoroutine()
     {
-        hitJudgment = !hitJudgment;
-        Debug.Log( hitJudgment);
+        while (true)
+        {
+            hitJudgment = !hitJudgment;
+            Debug.Log(hitJudgment);
+            yield return new WaitForSeconds(switchInterval);
+        }
+       
     }
     
 }

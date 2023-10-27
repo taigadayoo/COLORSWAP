@@ -5,67 +5,32 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public Color whiteColor = Color.white;
-    public Color blueColor = Color.blue;
-    public float colorSwitchInterval = 2f;
+    public delegate void  changeTimerHandle();
+    public changeTimerHandle changeTimerEvent;
+    public float CountTime = 2f;
 
-    private Renderer objectRenderer;
-    private bool isWhite = true;
-    enum CircleColor
-    {
-        front,
-        back
-    }
     [SerializeField]
-    private CircleColor circlecolor;
-    public Image UIobj;
-    public bool roop;
-    public float countTime = 2.0f;
-    // Update is called once per frame
-    void Start()
+    public Image WhiteSprite;
+    [SerializeField]
+    public Image BlueSprite;
+
+    private void Start()
     {
-        objectRenderer = GetComponent<Renderer>();
-        if (circlecolor == CircleColor.front)
-        {
-            InvokeRepeating("SwitchColorfront", 0f, colorSwitchInterval);
-        }
-        if (circlecolor == CircleColor.back)
-        {
-            InvokeRepeating("SwitchColorback", 0f, colorSwitchInterval);
-        }
-        StartCoroutine(UpdateUIFill());
+        StartCoroutine(ChangeTimerColor());
     }
 
-    private void SwitchColorfront()
-    {
-        UIobj.color = isWhite ? whiteColor : blueColor;
-        isWhite = !isWhite;
-    }
-    private void SwitchColorback()
-    {
-        UIobj.color = isWhite ? blueColor : whiteColor;
-        isWhite = !isWhite;
-    }
-    private IEnumerator UpdateUIFill()
+    private IEnumerator ChangeTimerColor()
     {
         while (true)
         {
-            if (roop)
+            BlueSprite.fillAmount -= 1.0f / CountTime * Time.deltaTime;
+            if (BlueSprite.fillAmount <= 0 || BlueSprite.fillAmount >= 1)
             {
-                UIobj.fillAmount -= 1.0f / countTime * Time.deltaTime;
+                BlueSprite.fillAmount = 1.0f;
+                changeTimerEvent.Invoke();
             }
-            else
-            {
-                UIobj.fillAmount = 1.0f;
-            }
-
-            if (UIobj.fillAmount <= 0 || UIobj.fillAmount >= 1)
-            {
-                UIobj.fillClockwise = !UIobj.fillClockwise;
-                roop = !roop;
-            }
-
-            yield return null; // 1ÉtÉåÅ[ÉÄë“Ç¬
+            yield return null;
         }
     }
+
 }

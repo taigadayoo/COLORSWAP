@@ -4,16 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Dead
-  - Door
-  - MoveStage
-  - Flag
-  - lever
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - groundLayer
+  - 
   - Water
   - UI
   - 

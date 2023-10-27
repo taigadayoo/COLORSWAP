@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         _spriteRenderer   = gameObject.GetComponent<SpriteRenderer>();
         _playerController = GetComponent<PlayerController>();
         currentJumpCount  = maxJumpCount;
+        gameObject.GetComponentInChildren<PlayerJumpController>().JumpEvent += ResetJump;
     }
 
     private void Update()
@@ -63,13 +64,13 @@ public class Player : MonoBehaviour
         //左
         if (horizontalInput < 0)
         {
-            _spriteRenderer.flipX = true;
+            _spriteRenderer.flipX = !isGravityReversed;
             isFacingRight = true;
         }
         //右
         else if (horizontalInput > 0)
         {
-            _spriteRenderer.flipX = false;
+            _spriteRenderer.flipX = isGravityReversed;
             isFacingRight = false;
         }
     }
@@ -126,17 +127,13 @@ public class Player : MonoBehaviour
         {
             isGravityReversed = !isGravityReversed;
             _rigidbody2D.gravityScale *= -1;
-            _spriteRenderer.flipY = isGravityReversed;
+            transform.Rotate(0,0,180);
         }
     }
     
-    
-    private void OnCollisionEnter2D(Collision2D col)
+    private void ResetJump()
     {
-        if (col.gameObject.CompareTag("Ground"))
-        {
-            currentJumpCount = maxJumpCount;
-            canJump = true;
-        }
+        currentJumpCount = maxJumpCount;
+        canJump = true;
     }
 }

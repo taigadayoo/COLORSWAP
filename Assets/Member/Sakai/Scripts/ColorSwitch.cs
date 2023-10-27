@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ColorSwitch : MonoBehaviour
 {
-    
-    public Color whiteColor = Color.white;
-    public Color blueColor = Color.blue;
+
+    public Color whiteColor;
+    public Color blueColor;
     public float colorSwitchInterval = 2f;
 
     [SerializeField]
@@ -25,28 +25,31 @@ public class ColorSwitch : MonoBehaviour
         changecolor();
     }
 
-   
-        
-      public void  ColorChange()
-        {
+
+
+    public void ColorChange()
+    {
         isWhite = !isWhite;
         objectRenderer.material.color = isWhite ? whiteColor : blueColor;
         changecolor();
-        }
-   private  void changecolor()
+    }
+    private void changecolor()
     {
+        var _color = Color.white;
+
+        if(isWhite)
+        {
+            _color = blueColor;
+        }
+        else
+        {
+            _color = whiteColor;
+        }
+
+
         foreach (var sprite in spriteList)
         {
-            if (isWhite)
-            {
-                sprite.color = new Color(98, 114, 166);
-            }
-            else
-            {
-                sprite.color = new Color(255, 255, 255);
-            }
-
-
+            sprite.color = _color;
         }
     }
 }

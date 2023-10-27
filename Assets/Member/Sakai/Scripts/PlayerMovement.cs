@@ -10,11 +10,14 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded = false;
     [SerializeField]
     public GameObject Save;
-    public MonoBehaviour targetScript;
+    public MonoBehaviour targetScript = null;
    
     void Start()
     {
-        targetScript.enabled = false;
+        if (targetScript != null)
+        {
+            targetScript.enabled = false;
+        }
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -61,7 +64,10 @@ public class PlayerMovement : MonoBehaviour
         }
         if(other.gameObject.tag == "lever")
         {
-            targetScript.enabled = true;
+            if (targetScript != null)
+            {
+                targetScript.enabled = true;
+            }
         }
     }
     void OnCollisionEnter(Collision col)

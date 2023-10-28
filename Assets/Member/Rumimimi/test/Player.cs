@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         {
             HandleGravityReverse();
             currentJumpCount = 0;
-        }
+        }    
     }
 
     /// <summary>

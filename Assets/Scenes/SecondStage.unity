@@ -2205,7 +2205,7 @@ PrefabInstance:
       objectReference: {fileID: 1417296143}
     - target: {fileID: 7841042669736191325, guid: 5acb3d962aea78443afe260903f1adb7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPause
+      value: CancelPause
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5acb3d962aea78443afe260903f1adb7, type: 3}

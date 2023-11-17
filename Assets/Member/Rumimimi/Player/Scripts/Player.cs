@@ -49,7 +49,15 @@ public class Player : MonoBehaviour
 
         if (_playerController.IsPausePressed)
         {
-            GameManager.Instance.PauseEvent?.Invoke();
+            if (GameManager.Instance.GetIsPause())
+            {
+                GameManager.Instance.UnPauseEvent?.Invoke();
+            }
+            else
+            {
+                GameManager.Instance.PauseEvent?.Invoke();
+
+            }
         }
     }
 

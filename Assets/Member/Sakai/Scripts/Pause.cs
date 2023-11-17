@@ -10,33 +10,46 @@ public class Pause : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.PauseEvent += GamePause;
+        GameManager.Instance.UnPauseEvent += UnGamePause;
         pausePanel.SetActive(false);
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            OnPause();
+            if (GameManager.Instance.GetIsPause())
+            {
+                GameManager.Instance.UnPauseEvent?.Invoke();
+            }
+            else
+            {
+                GameManager.Instance.PauseEvent?.Invoke();
+
+            }
         }
     }
-    //public void Resume()
-    //{
-    //    Time.timeScale = 1;
-    //    pausePanel.SetActive(false);
-    //}
-    public void OnPause()
+
+    /// <summary>
+    /// ポーズ画面のボタンにつけるポーズを解除する処理
+    /// </summary>
+    public void CancelPause()
     {
-        if (isPause == false)
-        {
-            GameManager.Instance.PauseEvent?.Invoke();
-            Time.timeScale = 0;         
-        }
-        else
-        {
-            Time.timeScale = 1;
-            GameManager.Instance.UnPauseEvent?.Invoke();
-        }
-        isPause = !isPause;
+        GameManager.Instance.UnPauseEvent?.Invoke();
+    }
+    
+    private void GamePause()
+    {
+        Time.timeScale = 0;
+        isPause = true;
         pausePanel.SetActive(isPause);
+    }
+    
+    private void UnGamePause()
+    {
+        Time.timeScale = 1;
+        isPause = false;
+        pausePanel.SetActive(isPause);
+
     }
 }

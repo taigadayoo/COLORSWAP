@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public GameObject lever;
     public GameObject moveStage;
 
+    private bool isPause;
+    
     private void Awake()
     {
         if(Instance == null)
@@ -36,7 +38,9 @@ public class GameManager : MonoBehaviour
     {
         
         UnPauseEvent += StartBGM;
+        UnPauseEvent += ChangePause;
         PauseEvent += PauseBGM;
+        PauseEvent += ChangePause;
 
         if(savePoint == null)
         {
@@ -108,14 +112,22 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PauseBGM();
     }
 
+    public bool GetIsPause()
+    {
+        return isPause;
+    }
 
-
-    // ‘¼‚ÌƒQ[ƒ€ƒƒWƒbƒN‚ğ’Ç‰Á‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·
+    private void ChangePause()
+    {
+        isPause = !isPause;
+    }
+    
+    // ä»–ã®ã‚²ãƒ¼ãƒ ãƒ­ã‚¸ãƒƒã‚¯ã‚’è¿½åŠ ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™
 
     // Update is called once per frame
     void Update()
     {
-        // ƒQ[ƒ€‘S‘Ì‚ÌƒƒWƒbƒN‚ğ‚±‚±‚É’Ç‰Á
+        // ã‚²ãƒ¼ãƒ å…¨ä½“ã®ãƒ­ã‚¸ãƒƒã‚¯ã‚’ã“ã“ã«è¿½åŠ 
     }
     }
 

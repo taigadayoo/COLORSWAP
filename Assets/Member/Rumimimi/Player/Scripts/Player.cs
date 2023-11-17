@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 
         if (_playerController.IsPausePressed)
         {
-            Dead();
+            GameManager.Instance.PauseEvent?.Invoke();
         }
     }
 
@@ -125,8 +125,10 @@ public class Player : MonoBehaviour
     /// <summary>
     /// 死んだ時の初期化
     /// </summary>
-    private void Dead()
+    public void Dead()
     {
+        _rigidbody2D.velocity = Vector2.zero;
+
         if (isGravityReversed == false)
         {
             return;

@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Member/Sakai/Scene/GameScene.unity
     guid: 44d640056ee3ad24bb3c21475169e216
   - enabled: 1
-    path: Assets/Member/Sakai/Scene/FirstStage.unity
+    path: Assets/Scenes/FirstStage.unity
     guid: ab5c329b9ad441e44acc9df1c73652e1
   - enabled: 1
     path: Assets/Member/Sakai/Scene/Clear.unity

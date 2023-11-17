@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerGimik : MonoBehaviour
 {
-
+    [SerializeField]
+    private Player player;
     // GameManager‚Ö‚ÌQÆ‚ğ’Ç‰Á
     public GameManager gameManager;
 
@@ -31,7 +32,7 @@ public class PlayerGimik : MonoBehaviour
     {
         if (other.gameObject.tag == "Dead")
         {
-
+            player.Dead();
             gameManager.RespawnPlayer();
         }
         if (other.gameObject.tag == "Flag")

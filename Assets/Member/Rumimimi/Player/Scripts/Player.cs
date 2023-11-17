@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
     [Header("ステータス")]
     [SerializeField,Header("移動速度")]
     private int  speed;
-    [SerializeField,Header("ブレーキ力")]
-    private int  brakes;
     [SerializeField,Header("ジャンプ力")]
     private int  jumpPower;
     [SerializeField,Header("最大ジャンプ数")]
@@ -43,12 +41,16 @@ public class Player : MonoBehaviour
     {
         HandleMovement(_playerController.Horizontal);
         if (_playerController.IsJumpPressed) HandleJump();
-        if (_playerController.IsBrakePressed) Brake();
         if (_playerController.IsGravityReversePressed)
         {
             HandleGravityReverse();
             currentJumpCount = 0;
-        }    
+        }
+
+        if (_playerController.IsPausePressed)
+        {
+            Dead();
+        }
     }
 
     /// <summary>
@@ -73,26 +75,6 @@ public class Player : MonoBehaviour
             _spriteRenderer.flipX = isGravityReversed;
             isFacingRight = false;
         }
-    }
-
-    /// <summary>
-    /// ブレーキメソッド
-    /// </summary>
-    private void Brake()
-    {
-        //右
-        if (isFacingRight)
-        {
-            movementVector.x -= brakes;
-            if (movementVector.x <= 0) movementVector.x = 0;
-        }
-        //左
-        else
-        {
-            movementVector.x += brakes;
-            if (movementVector.x >= 0) movementVector.x = 0;
-        }
-        _rigidbody2D.velocity = movementVector;
     }
 
     /// <summary>
@@ -131,9 +113,25 @@ public class Player : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// ジャンプ状態の初期化
+    /// </summary>
     private void ResetJump()
     {
         currentJumpCount = maxJumpCount;
         canJump = true;
     }
-}
+
+    /// <summary>
+    /// 死んだ時の初期化
+    /// </summary>
+    private void Dead()
+    {
+        if (isGravityReversed == false)
+        {
+            return;
+        }
+        ResetJump();
+        HandleGravityReverse();
+    }
+} 

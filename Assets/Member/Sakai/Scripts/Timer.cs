@@ -13,9 +13,13 @@ public class Timer : MonoBehaviour
     public Image WhiteSprite;
     [SerializeField]
     public Image BlueSprite;
-
+    [SerializeField]
+    private AudioSource audioSource;
     private void Start()
     {
+        GameManager.Instance.PauseEvent += PauseTimer;
+        GameManager.Instance.UnPauseEvent += UnPauseTimer;
+        SoundManager.Instance.StartSE(SEtype.ChangeTimer, audioSource);
         StartCoroutine(ChangeTimerColor());
     }
 
@@ -27,10 +31,17 @@ public class Timer : MonoBehaviour
             if (BlueSprite.fillAmount <= 0 || BlueSprite.fillAmount >= 1)
             {
                 BlueSprite.fillAmount = 1.0f;
-                changeTimerEvent.Invoke();
+                changeTimerEvent?.Invoke();
             }
             yield return null;
         }
     }
-
+    private void PauseTimer()
+    {
+        SoundManager.Instance.PauseSE(audioSource);
+    }
+    private void UnPauseTimer()
+    {
+        audioSource.Play();
+    }
 }

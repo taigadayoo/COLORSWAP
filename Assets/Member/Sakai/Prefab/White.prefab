@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4380446101481064444}
   m_Layer: 0
   m_Name: White
-  m_TagString: MoveStage
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

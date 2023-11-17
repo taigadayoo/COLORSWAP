@@ -21,6 +21,7 @@ public class PlayerGimik : MonoBehaviour
         {
 
             gameManager.OpenDoor();
+
         }
     }
 

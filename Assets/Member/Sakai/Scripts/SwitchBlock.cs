@@ -23,6 +23,7 @@ public class SwitchBlock : MonoBehaviour
 
     private void Update()
     {
+        
         if(block == Block.First)
         {
             if(hitJudgment)

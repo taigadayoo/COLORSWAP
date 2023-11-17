@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - lever
+  - MoveStage
+  - Door
+  - Dead
+  - Flag
   layers:
   - Default
   - TransparentFX

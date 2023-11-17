@@ -15,7 +15,7 @@ public class SceneTransition : MonoBehaviour
     void Update()
     {
         // ×ボタン押したらシーン遷移
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2")|| Input.GetMouseButtonDown(0))
         {
             SceneManager.LoadScene(2);
         }

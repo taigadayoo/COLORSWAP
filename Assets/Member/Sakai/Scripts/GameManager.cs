@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    public delegate void PaudeHandller();
+    public PaudeHandller PauseEvent;
+    public delegate void UnPauseHandller();
+    public PaudeHandller UnPauseEvent;
+
     [SerializeField]
     public GameObject player;
     public GameObject savePoint;
@@ -14,8 +21,23 @@ public class GameManager : MonoBehaviour
     public GameObject lever;
     public GameObject moveStage;
 
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
+        
+        UnPauseEvent += StartBGM;
+        PauseEvent += PauseBGM;
+
         if(savePoint == null)
         {
             savePoint = flag;
@@ -24,6 +46,7 @@ public class GameManager : MonoBehaviour
         {
             targetScript.enabled = false;
         }
+        StartBGM();
     }
 
     public void RespawnPlayer()
@@ -75,7 +98,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-   
+   private void StartBGM()
+    {
+        SoundManager.Instance.PlayBGM(BGMtype.title);
+    }
+
+    private void PauseBGM()
+    {
+        SoundManager.Instance.PauseBGM();
+    }
+
+
 
     // 他のゲームロジックを追加することもできます
 

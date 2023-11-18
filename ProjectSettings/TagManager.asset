@@ -10,6 +10,7 @@ TagManager:
   - Door
   - Dead
   - Flag
+  - Gool
   layers:
   - Default
   - TransparentFX

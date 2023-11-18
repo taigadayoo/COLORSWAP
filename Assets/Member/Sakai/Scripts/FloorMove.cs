@@ -5,6 +5,14 @@ using DG.Tweening;
 
 public class FloorMove : MonoBehaviour
 {
+ 
+    private enum Direction
+    {
+        Side,
+        Vertical
+    }
+       [SerializeField]
+    Direction direction;
     public float moveSpeed = 500.0f; // ˆÚ“®‘¬“x
     public float maxHeight = 250.0f; // ãŒÀ‚‚³
     public float minHeight = -250.0f; // ‰ºŒÀ‚‚³
@@ -19,15 +27,32 @@ public class FloorMove : MonoBehaviour
 
     void Update()
     {
-        float newPosition = transform.position.y + currentVelocity * moveSpeed * Time.deltaTime;
-
-        if (newPosition > maxHeight || newPosition < minHeight)
+        if (direction == Direction.Vertical)
         {
-            // ‘¬“x‚Ì”½“]
-            currentVelocity *= -1.0f;
-        }
+            float newPosition = transform.position.y + currentVelocity * moveSpeed * Time.deltaTime;
 
-        // ˆÚ“®
-        rb.velocity = new Vector3(0, currentVelocity * moveSpeed, 0);
+            if (newPosition > maxHeight || newPosition < minHeight)
+            {
+                // ‘¬“x‚Ì”½“]
+                currentVelocity *= -1.0f;
+            }
+
+            // ˆÚ“®
+            rb.velocity = new Vector3(0, currentVelocity * moveSpeed, 0);
+        }
+        if (direction == Direction.Side)
+        {
+            float newPosition = transform.position.x + currentVelocity * moveSpeed * Time.deltaTime;
+
+            if (newPosition > maxHeight || newPosition < minHeight)
+            {
+                // ‘¬“x‚Ì”½“]
+                currentVelocity *= -1.0f;
+            }
+
+            // ˆÚ“®
+            rb.velocity = new Vector3(currentVelocity * moveSpeed, 0, 0);
+
+        }
     }
 }

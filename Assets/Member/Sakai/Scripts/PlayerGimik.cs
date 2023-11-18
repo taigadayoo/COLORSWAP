@@ -24,6 +24,12 @@ public class PlayerGimik : MonoBehaviour
             gameManager.OpenDoor();
 
         }
+        if (other.gameObject.tag == "Gool")
+        {
+
+            gameManager.GoolDoor();
+
+        }
     }
 
    
@@ -60,16 +66,13 @@ public class PlayerGimik : MonoBehaviour
 
     void OnCollisionExit(Collision col)
     {
-        if (col.gameObject.name == "MoveStage")
+        if (col.gameObject.name == "Ground")
         {
             // プレイヤーの親オブジェクトをリセットをGameManagerに委任
             gameManager.UnparentPlayerFromMoveStage();
         }
 
         // Update is called once per frame
-        void Update()
-        {
-            
-        }
+      
     }
 }

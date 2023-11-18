@@ -91,6 +91,10 @@ public class GameManager : MonoBehaviour
 
     public void OpenDoor()
     {
+        SceneManager.LoadScene("SecondStage");
+    }
+    public void GoolDoor()
+    {
         SceneManager.LoadScene("Clear");
     }
 

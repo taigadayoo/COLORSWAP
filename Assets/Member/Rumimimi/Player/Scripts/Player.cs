@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _spriteRenderer;
     private PlayerController _playerController;
+    private Animator _animator;
 
     [Header("ステータス")]
     [SerializeField,Header("移動速度")]
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
         _rigidbody2D      = gameObject.GetComponent<Rigidbody2D>();
         _spriteRenderer   = gameObject.GetComponent<SpriteRenderer>();
         _playerController = GetComponent<PlayerController>();
+        _animator = GetComponent<Animator>();
         currentJumpCount  = maxJumpCount;
         gameObject.GetComponentInChildren<PlayerJumpController>().JumpEvent += ResetJump;
     }
@@ -40,7 +42,10 @@ public class Player : MonoBehaviour
     private void Update()
     {
         HandleMovement(_playerController.Horizontal);
-        if (_playerController.IsJumpPressed) HandleJump();
+        if (_playerController.IsJumpPressed)
+        {
+            HandleJump();
+        }
         if (_playerController.IsGravityReversePressed)
         {
             HandleGravityReverse();
@@ -74,14 +79,27 @@ public class Player : MonoBehaviour
         //左
         if (horizontalInput < 0)
         {
-            _spriteRenderer.flipX = !isGravityReversed;
+            _spriteRenderer.flipX = isGravityReversed;
             isFacingRight = true;
         }
         //右
         else if (horizontalInput > 0)
         {
-            _spriteRenderer.flipX = isGravityReversed;
+            _spriteRenderer.flipX = !isGravityReversed;
             isFacingRight = false;
+        }
+        
+        
+        
+        if(horizontalInput == 0)
+        {
+            //Animator State Chenge
+            _animator.SetBool("IsMove",false);
+        }
+        else
+        {
+            //Animator State Chenge
+            _animator.SetBool("IsMove",true);
         }
     }
 
@@ -106,6 +124,8 @@ public class Player : MonoBehaviour
         Vector2 jumpVector = new Vector2(0, isGravityReversed ? -jumpPower : jumpPower);
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0);
         _rigidbody2D.AddForce(jumpVector, ForceMode2D.Impulse);
+        //Animator State Chenge
+        _animator.SetBool("IsJump",true);
     }
 
     /// <summary>
@@ -118,6 +138,9 @@ public class Player : MonoBehaviour
             isGravityReversed = !isGravityReversed;
             _rigidbody2D.gravityScale *= -1;
             transform.Rotate(0,0,180);
+            
+            //Animator State Chenge
+            _animator.SetBool("IsJump",true);
         }
     }
     
@@ -127,6 +150,8 @@ public class Player : MonoBehaviour
     private void ResetJump()
     {
         currentJumpCount = maxJumpCount;
+        //Animator State Chenge
+        _animator.SetBool("IsJump",false);
         canJump = true;
     }
 

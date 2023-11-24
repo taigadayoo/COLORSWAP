@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class GameManager : MonoBehaviour
     public GameObject lever;
     public GameObject moveStage;
 
+    public Sprite newleverSprite;
+    private Sprite leverimage;
+    //public Sprite newSaveSprite;
+
+
     private bool isPause;
     
     private void Awake()
@@ -36,7 +42,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+
+        leverimage = lever.GetComponent<Sprite>();
         UnPauseEvent += StartBGM;
         UnPauseEvent += ChangePause;
         PauseEvent += PauseBGM;
@@ -69,6 +76,7 @@ public class GameManager : MonoBehaviour
     public void SetSavePoint(GameObject newFlag)
     {
         savePoint = newFlag;
+       
     }
 
     public void EnableTargetScript()
@@ -102,6 +110,7 @@ public class GameManager : MonoBehaviour
     {
         if (targetScript != null)
         {
+            leverimage = newleverSprite;
             targetScript.enabled = true;
         }
     }
@@ -126,12 +135,8 @@ public class GameManager : MonoBehaviour
         isPause = !isPause;
     }
     
-    // 他のゲームロジックを追加することもできます
 
     // Update is called once per frame
-    void Update()
-    {
-        // ゲーム全体のロジックをここに追加
-    }
+  
     }
 

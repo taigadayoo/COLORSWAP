@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+   private FloorMove floorMove;
     public static GameManager Instance;
 
     public delegate void PaudeHandller();
@@ -23,9 +25,12 @@ public class GameManager : MonoBehaviour
     public GameObject moveStage;
 
     public Sprite newleverSprite;
-    private Sprite leverimage;
-    //public Sprite newSaveSprite;
+    private SpriteRenderer leverimage;
 
+    public Sprite newFlagSprite;
+    private SpriteRenderer flagimage;
+    //public Sprite newSaveSprite;
+    private Rigidbody2D otherRigidbody;
 
     private bool isPause;
     
@@ -42,8 +47,15 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-
-        leverimage = lever.GetComponent<Sprite>();
+        if (floorMove != null)
+        {
+            otherRigidbody = floorMove.rb;
+        }
+        if (lever != null)
+        {
+            leverimage = lever.GetComponent<SpriteRenderer>();
+        }
+       
         UnPauseEvent += StartBGM;
         UnPauseEvent += ChangePause;
         PauseEvent += PauseBGM;
@@ -75,8 +87,10 @@ public class GameManager : MonoBehaviour
 
     public void SetSavePoint(GameObject newFlag)
     {
-        savePoint = newFlag;
        
+        savePoint = newFlag;
+        flagimage = savePoint.GetComponent<SpriteRenderer>();
+        flagimage.sprite = newFlagSprite;
     }
 
     public void EnableTargetScript()
@@ -95,6 +109,7 @@ public class GameManager : MonoBehaviour
     public void UnparentPlayerFromMoveStage()
     {
         player.transform.SetParent(null);
+        otherRigidbody.velocity = Vector3.zero;
     }
 
     public void OpenDoor()
@@ -110,7 +125,7 @@ public class GameManager : MonoBehaviour
     {
         if (targetScript != null)
         {
-            leverimage = newleverSprite;
+            leverimage.sprite = newleverSprite;
             targetScript.enabled = true;
         }
     }
@@ -134,9 +149,11 @@ public class GameManager : MonoBehaviour
     {
         isPause = !isPause;
     }
-    
 
-    // Update is called once per frame
-  
+    private void Update()
+    {
+       
     }
+
+}
 

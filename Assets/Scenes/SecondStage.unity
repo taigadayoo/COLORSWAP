@@ -946,7 +946,7 @@ PrefabInstance:
       objectReference: {fileID: 1371595509}
     - target: {fileID: 6457716607674891113, guid: 5b89a2396cbe31c428e527eac54fbcae, type: 3}
       propertyPath: spriteList.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6457716607674891113, guid: 5b89a2396cbe31c428e527eac54fbcae, type: 3}
       propertyPath: spriteList.Array.data[0]
@@ -1134,10 +1134,12 @@ MonoBehaviour:
   player: {fileID: 1465353187}
   savePoint: {fileID: 660488207}
   targetScript: {fileID: 0}
-  door: {fileID: 0}
+  door: {fileID: 850228626}
   flag: {fileID: 660488207}
   lever: {fileID: 0}
   moveStage: {fileID: 0}
+  newleverSprite: {fileID: 0}
+  newFlagSprite: {fileID: 21300000, guid: 0a86b81a83136fd4a83c817813fcdb1c, type: 3}
 --- !u!4 &748315597
 Transform:
   m_ObjectHideFlags: 0
@@ -1162,6 +1164,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9149685862135661617, guid: b8cbffb38f3d7f047b4955b67364d3a6, type: 3}
   m_PrefabInstance: {fileID: 1650189903}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &850228626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7816029035713201901, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
+  m_PrefabInstance: {fileID: 1953185727}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &881499755
 PrefabInstance:
@@ -1546,19 +1553,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480553047034531266, guid: c650bc429a5d1f84595ea5bf1a079a2b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1826.9541
+      value: 1831.7041
       objectReference: {fileID: 0}
     - target: {fileID: 480553047034531266, guid: c650bc429a5d1f84595ea5bf1a079a2b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 176.2
+      value: 174.64943
       objectReference: {fileID: 0}
     - target: {fileID: 480553047034531266, guid: c650bc429a5d1f84595ea5bf1a079a2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -349
+      value: -346.6665
       objectReference: {fileID: 0}
     - target: {fileID: 480553047034531266, guid: c650bc429a5d1f84595ea5bf1a079a2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1228
+      value: -1228.7778
       objectReference: {fileID: 0}
     - target: {fileID: 480553047034531266, guid: c650bc429a5d1f84595ea5bf1a079a2b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2236,7 +2243,7 @@ PrefabInstance:
     - target: {fileID: 5648999199972850682, guid: 2bcd11ea7aeee2a4ea3c3812960bcfed, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0a86b81a83136fd4a83c817813fcdb1c, type: 3}
+      objectReference: {fileID: 21300000, guid: 423fa715f261c6e4f87dbb4ea3d6ff78, type: 3}
     - target: {fileID: 5648999199972850683, guid: 2bcd11ea7aeee2a4ea3c3812960bcfed, type: 3}
       propertyPath: m_RootOrder
       value: 17

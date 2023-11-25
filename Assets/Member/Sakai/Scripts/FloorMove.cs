@@ -17,8 +17,10 @@ public class FloorMove : MonoBehaviour
     public float maxHeight = 250.0f; // ãŒÀ‚‚³
     public float minHeight = -250.0f; // ‰ºŒÀ‚‚³
 
+    public bool isReversing = false;
+
     private float currentVelocity = 1.0f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     void Start()
     {
@@ -31,10 +33,21 @@ public class FloorMove : MonoBehaviour
         {
             float newPosition = transform.position.y + currentVelocity * moveSpeed * Time.deltaTime;
 
+            
+            if ((newPosition >= minHeight && newPosition <= maxHeight) && isReversing)
+            {
+                isReversing = false;
+            }
             if (newPosition > maxHeight || newPosition < minHeight)
             {
                 // ‘¬“x‚Ì”½“]
-                currentVelocity *= -1.0f;
+                if (!isReversing)
+                {
+                    currentVelocity *= -1.0f;
+                    isReversing = true;
+                    float adjustment = currentVelocity > 0 ? 0.01f : -0.01f;
+                    transform.position = new Vector3 (transform.position.x, Mathf.Clamp(newPosition, minHeight + adjustment, maxHeight - adjustment) ,transform.position.z);
+                }
             }
 
             // ˆÚ“®
@@ -46,8 +59,13 @@ public class FloorMove : MonoBehaviour
 
             if (newPosition > maxHeight || newPosition < minHeight)
             {
-                // ‘¬“x‚Ì”½“]
-                currentVelocity *= -1.0f;
+                if (!isReversing)
+                {
+                    currentVelocity *= -1.0f;
+                    isReversing = true;
+                    float adjustment = currentVelocity > 0 ? 0.01f : -0.01f;
+                    transform.position = new Vector3(Mathf.Clamp(newPosition, minHeight + adjustment, maxHeight - adjustment),transform.position.y, transform.position.z);
+                }
             }
 
             // ˆÚ“®

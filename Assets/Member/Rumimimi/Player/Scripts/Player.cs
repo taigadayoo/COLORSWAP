@@ -23,7 +23,13 @@ public class Player : MonoBehaviour
     private bool isGravityReversed = false;
 
     private Vector2 movementVector;
-
+    private enum GravitySwitch
+    {
+        On,
+        Off
+    }
+    [SerializeField]
+    GravitySwitch gravitySwitch;
     private void Awake()
     {
         Initialize();
@@ -46,7 +52,7 @@ public class Player : MonoBehaviour
         {
             HandleJump();
         }
-        if (_playerController.IsGravityReversePressed)
+        if (_playerController.IsGravityReversePressed && gravitySwitch == GravitySwitch.On)
         {
             HandleGravityReverse();
             currentJumpCount = 0;

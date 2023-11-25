@@ -1896,6 +1896,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 9.09
       objectReference: {fileID: 0}
+    - target: {fileID: 1097491685088764067, guid: deb3f1bd2ca07e74ca15ed7f5f8b61ba, type: 3}
+      propertyPath: gravitySwitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1097491685088764068, guid: deb3f1bd2ca07e74ca15ed7f5f8b61ba, type: 3}
       propertyPath: m_Sprite
       value: 

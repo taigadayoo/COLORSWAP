@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.Haptics;
 
+public class DualShock4GamepadHID : DualShockGamepad, IDualShockHaptics, IDualMotorRumble, IHaptics, IEventPreProcessor
+{
+}
 public class ColorSwitch : MonoBehaviour
 {
 
@@ -39,10 +44,12 @@ public class ColorSwitch : MonoBehaviour
 
         if(isWhite)
         {
+            DualShock4GamepadHID.current.SetLightBarColor(Color.white);
             _color = blueColor;
         }
         else
         {
+            DualShock4GamepadHID.current.SetLightBarColor(Color.blue);
             _color = whiteColor;
         }
 

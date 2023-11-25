@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem.Haptics;
 
-public class DualShock4GamepadHID : DualShockGamepad, IDualShockHaptics, IDualMotorRumble, IHaptics, IEventPreProcessor
-{
-}
+//public class DualShock4GamepadHID : DualShockGamepad, IDualShockHaptics, IDualMotorRumble, IHaptics, IEventPreProcessor
+//{
+//}
 
 
 

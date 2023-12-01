@@ -13,7 +13,7 @@ public class ColorSwitch : MonoBehaviour
     public Color whiteColor;
     public Color blueColor;
     public float colorSwitchInterval = 2f;
-
+    
     [SerializeField]
     private List<SpriteRenderer> spriteList = new List<SpriteRenderer>();
 
@@ -26,6 +26,7 @@ public class ColorSwitch : MonoBehaviour
     {
         timer.changeTimerEvent += ColorChange;
         objectRenderer = GetComponent<Renderer>();
+       
 
         changecolor();
     }
@@ -41,15 +42,21 @@ public class ColorSwitch : MonoBehaviour
     private void changecolor()
     {
         var _color = Color.white;
-
-        if(isWhite)
+        string[] joystickNames = Input.GetJoystickNames();
+        if (isWhite)
         {
-            DualShock4GamepadHID.current.SetLightBarColor(Color.white);
+            if (joystickNames.Length > 0 && !string.IsNullOrEmpty(joystickNames[0]))
+            {
+                DualShock4GamepadHID.current.SetLightBarColor(Color.white);
+            }
             _color = blueColor;
         }
         else
         {
-            DualShock4GamepadHID.current.SetLightBarColor(Color.blue);
+            if (joystickNames.Length > 0 && !string.IsNullOrEmpty(joystickNames[0]))
+            {
+                DualShock4GamepadHID.current.SetLightBarColor(Color.blue);
+            }
             _color = whiteColor;
         }
 

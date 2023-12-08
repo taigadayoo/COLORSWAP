@@ -17,7 +17,7 @@ public class SceneTransition : MonoBehaviour
         // ×ボタン押したらシーン遷移
         if (Input.GetButton("Fire2"))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("StageSelection");
         }
     }
 }

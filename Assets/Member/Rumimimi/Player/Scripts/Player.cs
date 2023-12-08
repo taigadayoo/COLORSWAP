@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     
     private bool isFacingRight     = true;
     private bool canJump           = true;
+    private bool isFly             = false;
     private bool isGravityReversed = false;
 
     private Vector2 movementVector;
@@ -42,7 +43,9 @@ public class Player : MonoBehaviour
         _playerController = GetComponent<PlayerController>();
         _animator = GetComponent<Animator>();
         currentJumpCount  = maxJumpCount;
-        gameObject.GetComponentInChildren<PlayerJumpController>().JumpEvent += ResetJump;
+        var jumpC = gameObject.GetComponentInChildren<PlayerJumpController>();
+        jumpC.JumpEvent += ResetJump;
+        jumpC.CantGravityReversedEvent += CantGravityReversedEvent;
     }
 
     private void Update()
@@ -139,15 +142,17 @@ public class Player : MonoBehaviour
     /// </summary>
     private void HandleGravityReverse()
     {
-        if (currentJumpCount == maxJumpCount)
+        if (isFly || currentJumpCount != maxJumpCount)
         {
-            isGravityReversed = !isGravityReversed;
-            _rigidbody2D.gravityScale *= -1;
-            transform.Rotate(0,0,180);
-            
-            //Animator State Chenge
-            _animator.SetBool("IsJump",true);
+            return;
         }
+        
+        isGravityReversed = !isGravityReversed;
+        _rigidbody2D.gravityScale *= -1;
+        transform.Rotate(0,0,180);
+            
+        //Animator State Chenge
+        _animator.SetBool("IsJump",true);
     }
     
     /// <summary>
@@ -156,11 +161,20 @@ public class Player : MonoBehaviour
     private void ResetJump()
     {
         currentJumpCount = maxJumpCount;
-        //Animator State Chenge
         _animator.SetBool("IsJump",false);
         canJump = true;
+        isFly = false;
     }
 
+    /// <summary>
+    /// 地面から足が離れた場合
+    /// </summary>
+    private void CantGravityReversedEvent()
+    {
+        _animator.SetBool("IsJump",true);
+        isFly = true;
+    }
+    
     /// <summary>
     /// 死んだ時の初期化
     /// </summary>

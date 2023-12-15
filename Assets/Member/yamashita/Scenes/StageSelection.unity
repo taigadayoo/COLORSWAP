@@ -130,6 +130,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1180935252}
     m_Modifications:
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _next
+      value: 
+      objectReference: {fileID: 783692607}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _prev
+      value: 
+      objectReference: {fileID: 1635362205}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _stage1
+      value: 
+      objectReference: {fileID: 1635362205}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _stage2
+      value: 
+      objectReference: {fileID: 385723535}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _stage3
+      value: 
+      objectReference: {fileID: 783692607}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _selectButton
+      value: 
+      objectReference: {fileID: 1734389025}
     - target: {fileID: 5095579087301039380, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -226,7 +254,8 @@ PrefabInstance:
       propertyPath: m_Text
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
 --- !u!224 &385723534 stripped
 RectTransform:
@@ -293,6 +322,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1180935252}
     m_Modifications:
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _next
+      value: 
+      objectReference: {fileID: 1635362205}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _prev
+      value: 
+      objectReference: {fileID: 385723535}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _stage1
+      value: 
+      objectReference: {fileID: 1635362205}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _stage2
+      value: 
+      objectReference: {fileID: 385723535}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _stage3
+      value: 
+      objectReference: {fileID: 783692607}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _selectButton
+      value: 
+      objectReference: {fileID: 1734389025}
     - target: {fileID: 5095579087301039380, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -389,7 +446,8 @@ PrefabInstance:
       propertyPath: m_Text
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
 --- !u!224 &783692606 stripped
 RectTransform:
@@ -750,6 +808,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1180935252}
     m_Modifications:
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _next
+      value: 
+      objectReference: {fileID: 385723535}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _prev
+      value: 
+      objectReference: {fileID: 783692607}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _stage1
+      value: 
+      objectReference: {fileID: 1635362205}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _stage2
+      value: 
+      objectReference: {fileID: 385723535}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _stage3
+      value: 
+      objectReference: {fileID: 783692607}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: _selectButton
+      value: 
+      objectReference: {fileID: 1734389025}
     - target: {fileID: 5095579087301039380, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -838,5 +924,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}

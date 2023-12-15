@@ -11,6 +11,10 @@ TagManager:
   - Dead
   - Flag
   - Gool
+  - Stage1
+  - Stage2
+  - Stage3
+  - Gooltutolial
   layers:
   - Default
   - TransparentFX

@@ -4,10 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
+    private AudioSource audioSourc2;
+    [SerializeField] private InputAction _action;
+    [SerializeField]
+    PlayerController playerController;
+   [SerializeField]
     Animator animator;
     [SerializeField]
     Animator animator2;
@@ -39,8 +45,12 @@ public class GameManager : MonoBehaviour
     private SpriteRenderer flagimage;
     //public Sprite newSaveSprite;
     private Rigidbody2D otherRigidbody;
-
+    private bool Nextbool = false;
+    private bool Next2bool = false;
+    private bool Nexttutobool = false;
     private bool isPause;
+    private bool Switchnext = false;
+    public bool PlayerStop = false;
     
     private void Awake()
     {
@@ -124,13 +134,34 @@ public class GameManager : MonoBehaviour
     {
         soundManager.StopBGM();
         SoundManager.Instance.PauseSE(audioSource);
+        SoundManager.Instance.PlayBGM(BGMtype.result);
         animator.SetTrigger("Slide");
         animator2.SetTrigger("NextSelect");
-
+        Nextbool = true;
+        PlayerStop = true;
+        Invoke("SwitchNext", 2.0f);
     }
     public void GoolDoor()
     {
-        SceneManager.LoadScene("Clear");
+        soundManager.StopBGM();
+        SoundManager.Instance.PauseSE(audioSource);
+        SoundManager.Instance.PlayBGM(BGMtype.result);
+        animator.SetTrigger("Slide");
+        animator2.SetTrigger("NextSelect");
+        Next2bool = true;
+        PlayerStop = true;
+        Invoke("SwitchNext", 2.0f);
+    }
+    public void OpenDoor2()
+    {
+        soundManager.StopBGM();
+        SoundManager.Instance.PauseSE(audioSource);
+        SoundManager.Instance.PlayBGM(BGMtype.result);
+        animator.SetTrigger("Slide");
+        animator2.SetTrigger("NextSelect");
+        Nexttutobool = true;
+        PlayerStop = true;
+        Invoke("SwitchNext", 2.0f);
     }
 
     public void ActivateLever()
@@ -161,10 +192,47 @@ public class GameManager : MonoBehaviour
     {
         isPause = !isPause;
     }
-
-    private void Update()
+    private void SwitchNext()
     {
-       
+        Switchnext = true;
+    }
+  
+    void Update()
+    {
+       if(Nextbool == true && Switchnext == true)
+        {
+            if(Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
+            {
+                SceneManager.LoadScene("SecondStage");
+            }
+            if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
+            {
+                SceneManager.LoadScene("Stageselection");
+
+            }
+        }
+        if (Next2bool == true && Switchnext == true)
+        {
+            if (Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
+            {
+                SceneManager.LoadScene("Clear");
+            }
+            if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
+            {
+                SceneManager.LoadScene("Stageselection");
+            }
+        }
+        if (Nexttutobool == true && Switchnext == true)
+        {
+            if (Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
+            {
+                SceneManager.LoadScene("FirstStage");
+            }
+            if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
+            {
+                SceneManager.LoadScene("Stageselection");
+            }
+        }
     }
 
 }

@@ -29,4 +29,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Member/Sakai/Scene/Clear.unity
     guid: b13742dd049051648a56835f1a4f2021
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 1905df6f1cf15834e82a9d2f58aa90fc, type: 2}

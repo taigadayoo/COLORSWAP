@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private PlayerController _playerController;
     private Animator _animator;
+    [SerializeField]
+    GameManager gameManager;
 
     [Header("ステータス")]
     [SerializeField,Header("移動速度")]
@@ -50,7 +52,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement(_playerController.Horizontal);
+        if (gameManager.PlayerStop == false)
+        {
+            HandleMovement(_playerController.Horizontal);
+        }
         if (_playerController.IsJumpPressed)
         {
             HandleJump();
@@ -86,13 +91,13 @@ public class Player : MonoBehaviour
         _rigidbody2D.velocity = movementVector;
 
         //左
-        if (horizontalInput < 0 && Time.timeScale != 0)
+        if (horizontalInput < 0 && Time.timeScale != 0 && gameManager.PlayerStop == false)
         {
             _spriteRenderer.flipX = isGravityReversed;
             isFacingRight = true;
         }
         //右
-        else if (horizontalInput > 0 && Time.timeScale != 0)
+        else if (horizontalInput > 0 && Time.timeScale != 0 && gameManager.PlayerStop == false)
         {
             _spriteRenderer.flipX = !isGravityReversed;
             isFacingRight = false;
@@ -105,7 +110,7 @@ public class Player : MonoBehaviour
             //Animator State Chenge
             _animator.SetBool("IsMove",false);
         }
-        else if(horizontalInput != 0)
+        else if(horizontalInput != 0 && gameManager.PlayerStop == false)
         {
             //Animator State Chenge
             _animator.SetBool("IsMove",true);
@@ -117,7 +122,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void HandleJump()
     {
-        if (canJump && currentJumpCount > 0)
+        if (canJump && currentJumpCount > 0 && gameManager.PlayerStop == false)
         {
             Jump();
             currentJumpCount--;

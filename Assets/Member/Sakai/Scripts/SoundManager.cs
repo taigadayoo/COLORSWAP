@@ -37,7 +37,10 @@ public class SoundManager : MonoBehaviour
     }
     public void StopBGM()
     {
-        audioSouceBGM.Stop();//Ž~‚ß‚é
+        if (audioSouceBGM != null)
+        {
+            audioSouceBGM.Stop();//Ž~‚ß‚é
+        }
     }
     public void PauseBGM()
     {

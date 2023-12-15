@@ -10,11 +10,17 @@ public class PlayerController : MonoBehaviour
     public bool IsJumpPressed { get; private set; }
     public bool IsGravityReversePressed { get; private set; }
     public bool IsPausePressed { get; set; }
-    
+
+    public bool IsNextPressed { get; set; }
+
+    public bool IsTitlePressed { get; set; }
+
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction gravityReverseAction;
     private InputAction pauseAction;
+    private InputAction nextAction;
+    private InputAction titleAction;
 
     private void Awake()
     {
@@ -23,6 +29,8 @@ public class PlayerController : MonoBehaviour
         jumpAction = inputActions.FindAction("Jump");
         gravityReverseAction = inputActions.FindAction("GravityReverse");
         pauseAction = inputActions.FindAction("Pause");
+        nextAction = inputActions.FindAction("Next");
+        titleAction = inputActions.FindAction("Title");
     }
 
     private void OnEnable()
@@ -32,6 +40,8 @@ public class PlayerController : MonoBehaviour
         jumpAction.Enable();
         gravityReverseAction.Enable();
         pauseAction.Enable();
+        nextAction.Enable();
+        titleAction.Enable();
     }
 
     private void OnDisable()
@@ -41,6 +51,8 @@ public class PlayerController : MonoBehaviour
         jumpAction.Disable();
         gravityReverseAction.Disable();
         pauseAction.Disable();
+        nextAction.Disable();
+        titleAction.Disable();
     }
 
     private void Update()
@@ -49,6 +61,8 @@ public class PlayerController : MonoBehaviour
         IsJumpPressed = jumpAction.triggered;
         IsGravityReversePressed = gravityReverseAction.triggered;
         IsPausePressed = pauseAction.triggered;
+        IsTitlePressed = titleAction.triggered;
+        IsNextPressed = nextAction.triggered;
         
         // Vector2型の値として入力を読み取る
         Vector2 moveInput = moveAction.ReadValue<Vector2>();

@@ -30,6 +30,12 @@ public class PlayerGimik : MonoBehaviour
             gameManager.GoolDoor();
 
         }
+        if (other.gameObject.tag == "Gooltutolial")
+        {
+
+            gameManager.OpenDoor2();
+
+        }
     }
 
    

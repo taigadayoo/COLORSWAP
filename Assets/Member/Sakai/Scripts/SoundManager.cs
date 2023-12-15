@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
 
     [SerializeField]
-    private AudioSource audioSouceBGM;
+    public AudioSource audioSouceBGM;
     public static SoundManager Instance;//シングルトン、どこからでも呼べるようにする
 
     [SerializeField]

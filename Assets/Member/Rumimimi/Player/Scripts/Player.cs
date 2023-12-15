@@ -86,13 +86,13 @@ public class Player : MonoBehaviour
         _rigidbody2D.velocity = movementVector;
 
         //左
-        if (horizontalInput < 0)
+        if (horizontalInput < 0 && Time.timeScale != 0)
         {
             _spriteRenderer.flipX = isGravityReversed;
             isFacingRight = true;
         }
         //右
-        else if (horizontalInput > 0)
+        else if (horizontalInput > 0 && Time.timeScale != 0)
         {
             _spriteRenderer.flipX = !isGravityReversed;
             isFacingRight = false;
@@ -100,12 +100,12 @@ public class Player : MonoBehaviour
         
         
         
-        if(horizontalInput == 0)
+        if(horizontalInput == 0 || Time.timeScale == 0)
         {
             //Animator State Chenge
             _animator.SetBool("IsMove",false);
         }
-        else
+        else if(horizontalInput != 0)
         {
             //Animator State Chenge
             _animator.SetBool("IsMove",true);
@@ -134,7 +134,10 @@ public class Player : MonoBehaviour
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0);
         _rigidbody2D.AddForce(jumpVector, ForceMode2D.Impulse);
         //Animator State Chenge
-        _animator.SetBool("IsJump",true);
+        if (Time.timeScale != 0)
+        {
+            _animator.SetBool("IsJump", true);
+        }
     }
 
     /// <summary>
@@ -150,9 +153,12 @@ public class Player : MonoBehaviour
         isGravityReversed = !isGravityReversed;
         _rigidbody2D.gravityScale *= -1;
         transform.Rotate(0,0,180);
-            
+
         //Animator State Chenge
-        _animator.SetBool("IsJump",true);
+        if (Time.timeScale != 0)
+        {
+            _animator.SetBool("IsJump", true);
+        }
     }
     
     /// <summary>

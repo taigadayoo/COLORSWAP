@@ -45,15 +45,15 @@ public class StageSelection : MonoBehaviour
         if (_selectButton.gameObject.transform.position == _stage1.transform.position && Input.GetButton("Fire2"))
         {
             // âºÇÃÉVÅ[Éì
-            SceneManager.LoadScene("StageN");
+            SceneManager.LoadScene("FirstStage");
         }
         if (_selectButton.gameObject.transform.position == _stage2.transform.position && Input.GetButton("Fire2"))
         {
-            SceneManager.LoadScene("StageN");
+            SceneManager.LoadScene("SecondStage");
         }
         if (_selectButton.gameObject.transform.position == _stage3.transform.position && Input.GetButton("Fire2"))
         {
-            SceneManager.LoadScene("StageN");
+            SceneManager.LoadScene("TutorialStage");
         }
     }
 }

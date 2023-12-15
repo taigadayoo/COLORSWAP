@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    Animator animator;
+    [SerializeField]
+    Animator animator2;
     [SerializeField]
    private FloorMove floorMove;
     public static GameManager Instance;
@@ -14,7 +19,8 @@ public class GameManager : MonoBehaviour
     public PaudeHandller PauseEvent;
     public delegate void UnPauseHandller();
     public PaudeHandller UnPauseEvent;
-
+    [SerializeField]
+    private AudioSource audioSource;
     [SerializeField]
     public GameObject player;
     public GameObject savePoint;
@@ -24,6 +30,8 @@ public class GameManager : MonoBehaviour
     public GameObject lever;
     public GameObject moveStage;
 
+    [SerializeField]
+     private SoundManager soundManager;
     public Sprite newleverSprite;
     private SpriteRenderer leverimage;
 
@@ -114,7 +122,11 @@ public class GameManager : MonoBehaviour
 
     public void OpenDoor()
     {
-        SceneManager.LoadScene("SecondStage");
+        soundManager.StopBGM();
+        SoundManager.Instance.PauseSE(audioSource);
+        animator.SetTrigger("Slide");
+        animator2.SetTrigger("NextSelect");
+
     }
     public void GoolDoor()
     {

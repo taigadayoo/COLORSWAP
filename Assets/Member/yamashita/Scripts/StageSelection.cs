@@ -22,7 +22,7 @@ public class StageSelection : MonoBehaviour
     void Update()
     {
         float select = Input.GetAxis("Horizontal");
-        if (select == 1f && beforeInput != 1f)
+        if (select > 0f && beforeInput == 0f)
         {
             if (_selectButton.gameObject.transform.position == _stage1.transform.position)
                 _selectButton.gameObject.transform.position = _stage2.transform.position;
@@ -31,7 +31,7 @@ public class StageSelection : MonoBehaviour
             else if (_selectButton.gameObject.transform.position == _stage3.transform.position)
                 _selectButton.gameObject.transform.position = _stage1.transform.position;
         }
-        else if (select == -1f && beforeInput != -1f)
+        else if (select < 0f && beforeInput == 0f)
         {
             if (_selectButton.gameObject.transform.position == _stage1.transform.position)
                 _selectButton.gameObject.transform.position = _stage3.transform.position;

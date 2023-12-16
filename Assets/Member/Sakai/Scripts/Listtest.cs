@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class SwitchBlock : MonoBehaviour
+public class Listtest : MonoBehaviour
 {
     public bool hitJudgment = false;
     public BoxCollider2D col;
@@ -17,6 +17,11 @@ public class SwitchBlock : MonoBehaviour
     public float switchInterval = 2f;
     [SerializeField]
     private Block block;
+
+    private void Start()
+    {
+       
+    }
 
     public void StartSwitching()
     {

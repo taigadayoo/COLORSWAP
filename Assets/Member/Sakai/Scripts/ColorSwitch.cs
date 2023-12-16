@@ -24,11 +24,11 @@ public class ColorSwitch : MonoBehaviour
     private Timer timer;
     void Start()
     {
-        timer.changeTimerEvent += ColorChange;
+        
         objectRenderer = GetComponent<Renderer>();
        
 
-        changecolor();
+    
     }
 
 
@@ -39,7 +39,7 @@ public class ColorSwitch : MonoBehaviour
         objectRenderer.material.color = isWhite ? whiteColor : blueColor;
         changecolor();
     }
-    private void changecolor()
+    public void changecolor()
     {
         var _color = Color.white;
         string[] joystickNames = Input.GetJoystickNames();

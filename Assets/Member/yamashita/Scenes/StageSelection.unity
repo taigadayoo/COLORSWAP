@@ -444,7 +444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5095579088020216520, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
       propertyPath: m_Text
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095579088020216520, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3735435850485878573, guid: 3d29a4a8db00c134e95ed96ff2014517, type: 3}

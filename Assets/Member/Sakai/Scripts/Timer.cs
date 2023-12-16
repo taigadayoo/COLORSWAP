@@ -20,10 +20,10 @@ public class Timer : MonoBehaviour
         GameManager.Instance.PauseEvent += PauseTimer;
         GameManager.Instance.UnPauseEvent += UnPauseTimer;
         SoundManager.Instance.StartSE(SEtype.ChangeTimer, audioSource);
-        StartCoroutine(ChangeTimerColor());
+       
     }
 
-    private IEnumerator ChangeTimerColor()
+    public IEnumerator ChangeTimerColor()
     {
         while (true)
         {

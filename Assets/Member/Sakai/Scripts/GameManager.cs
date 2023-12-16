@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    
     [SerializeField]
     private AudioSource audioSourc2;
     [SerializeField] private InputAction _action;

@@ -42,16 +42,16 @@ public class StageSelection : MonoBehaviour
         }
         beforeInput = select;
 
-        if (_selectButton.gameObject.transform.position == _stage1.transform.position && Input.GetButton("Fire2"))
+        if (_selectButton.gameObject.transform.position == _stage1.transform.position && Input.GetButton("Fire2") || _selectButton.gameObject.transform.position == _stage1.transform.position && Input.GetKeyDown(KeyCode.M))
         {
             // âºÇÃÉVÅ[Éì
             SceneManager.LoadScene("FirstStage");
         }
-        if (_selectButton.gameObject.transform.position == _stage2.transform.position && Input.GetButton("Fire2"))
+        if (_selectButton.gameObject.transform.position == _stage2.transform.position && Input.GetButton("Fire2") || _selectButton.gameObject.transform.position == _stage2.transform.position && Input.GetKeyDown(KeyCode.M))
         {
             SceneManager.LoadScene("SecondStage");
         }
-        if (_selectButton.gameObject.transform.position == _stage3.transform.position && Input.GetButton("Fire2"))
+        if (_selectButton.gameObject.transform.position == _stage3.transform.position && Input.GetButton("Fire2") || _selectButton.gameObject.transform.position == _stage3.transform.position && Input.GetKeyDown(KeyCode.M))
         {
             SceneManager.LoadScene("TutorialStage");
         }

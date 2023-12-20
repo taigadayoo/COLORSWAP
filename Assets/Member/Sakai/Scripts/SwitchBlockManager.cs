@@ -10,15 +10,21 @@ public class SwitchBlockManager : MonoBehaviour
     [SerializeField]
     ColorSwitch colorSwitch;
 
+
     void Start()
     {
         timer.changeTimerEvent += colorSwitch.ColorChange;
         colorSwitch.changecolor();
         StartCoroutine(timer.ChangeTimerColor());
+        
 
+      
+    }
+    public void TimerColCameon()
+    {
         foreach (SwitchBlock switchBlock in switchBlocks)
         {
-            switchBlock.StartSwitching();
+            switchBlock.ChangeCol();
         }
     }
 }

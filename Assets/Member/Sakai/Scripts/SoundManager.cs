@@ -34,6 +34,7 @@ public class SoundManager : MonoBehaviour
     {
         audioSouceBGM.clip = BGMList[(int)bgmtype]; //clip‚Ì’†‚ÉList‚Ì’†‚Ì‹È“ü‚ê‚é
         audioSouceBGM.Play();
+
     }
     public void StopBGM()
     {
@@ -48,8 +49,9 @@ public class SoundManager : MonoBehaviour
     }
     public void StartSE(SEtype sEtype , AudioSource audio)
     {
-        audio.clip = SEList[(int)sEtype];
+        audio.clip = SEList[(int)sEtype];    
         audio.Play();
+      
     }
     public void PauseSE( AudioSource audio)
     {

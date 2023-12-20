@@ -18,11 +18,10 @@ public class SwitchBlock : MonoBehaviour
     [SerializeField]
     private Block block;
 
-    public void StartSwitching()
+    public void ChangeCol()
     {
-        StartCoroutine(SwitchHitCoroutine());
+            hitJudgment = !hitJudgment;
     }
-
     private void Update()
     {
         if (block == Block.First)
@@ -53,12 +52,5 @@ public class SwitchBlock : MonoBehaviour
         }
     }
 
-    IEnumerator SwitchHitCoroutine()
-    {
-        while (true)
-        {
-            hitJudgment = !hitJudgment;
-            yield return new WaitForSeconds(switchInterval);
-        }
-    }
+ 
 }

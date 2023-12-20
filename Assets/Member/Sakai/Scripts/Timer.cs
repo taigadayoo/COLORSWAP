@@ -8,13 +8,14 @@ public class Timer : MonoBehaviour
     public delegate void  changeTimerHandle();
     public changeTimerHandle changeTimerEvent;
     public float CountTime = 2f;
-
+    [SerializeField]
+    SwitchBlockManager switchBlockManager;
     [SerializeField]
     public Image WhiteSprite;
     [SerializeField]
     public Image BlueSprite;
     [SerializeField]
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     
     private bool quarterPassed = false;
     private bool halfPassed = false;
@@ -23,7 +24,7 @@ public class Timer : MonoBehaviour
     {
         GameManager.Instance.PauseEvent += PauseTimer;
         GameManager.Instance.UnPauseEvent += UnPauseTimer;
-
+        switchBlockManager.TimerColCameon();
         SoundManager.Instance.StartSE(SEtype.ChangeTimerTin, audioSource);
     }
 
@@ -54,6 +55,7 @@ public class Timer : MonoBehaviour
             // タイマーが終了したとき
             else if (BlueSprite.fillAmount <= 0)
             {
+                switchBlockManager.TimerColCameon();
                 SoundManager.Instance.StartSE(SEtype.ChangeTimerTin, audioSource);
                 BlueSprite.fillAmount = 1.0f;
                 changeTimerEvent?.Invoke();

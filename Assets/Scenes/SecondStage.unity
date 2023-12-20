@@ -1360,6 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1417c0a0dbf25f542a7585061bcb08e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: {fileID: 1371595509}
   audioSourc2: {fileID: 0}
   _action:
     m_Name: Action
@@ -1386,6 +1387,7 @@ MonoBehaviour:
   newleverSprite: {fileID: 0}
   newFlagSprite: {fileID: 21300000, guid: 4a12d96cc6212ae48b04032a44bcb961, type: 3}
   PlayerStop: 0
+  bgmtype: 0
 --- !u!4 &748315597
 Transform:
   m_ObjectHideFlags: 0
@@ -2325,6 +2327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountTime: 2
+  switchBlockManager: {fileID: 748315598}
   WhiteSprite: {fileID: 1010278401}
   BlueSprite: {fileID: 1789053496}
   audioSource: {fileID: 1371595511}
@@ -3436,8 +3439,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 8300000, guid: 3a02fdf0fca1f364a8cf67aef0a4c8f2, type: 3}
   SEList:
-  - {fileID: 8300000, guid: 94e8c03061101a640a87fdbf5e886b1e, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: aadcf8559a35a154a9982be658827ca5, type: 3}
+  - {fileID: 8300000, guid: f4487250346079e429971e8ff39edab1, type: 3}
   - {fileID: 0}
 --- !u!1 &1599207856
 GameObject:

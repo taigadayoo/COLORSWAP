@@ -8,7 +8,8 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    
+    [SerializeField]
+    public Timer timer;
     [SerializeField]
     private AudioSource audioSourc2;
     [SerializeField] private InputAction _action;
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
     private bool isPause;
     private bool Switchnext = false;
     public bool PlayerStop = false;
+    public BGMtype bgmtype;
     
     private void Awake()
     {
@@ -133,6 +135,9 @@ public class GameManager : MonoBehaviour
 
     public void OpenDoor()
     {
+        timer.audioSource.mute = true;
+        soundManager.audioSouceBGM.loop = false;
+        soundManager.PauseSE(timer.audioSource);
         soundManager.StopBGM();
         SoundManager.Instance.PauseSE(audioSource);
         SoundManager.Instance.PlayBGM(BGMtype.result);
@@ -144,6 +149,9 @@ public class GameManager : MonoBehaviour
     }
     public void GoolDoor()
     {
+       
+        //soundManager.audioSouceBGM.loop = false;
+        timer.audioSource.mute = true;
         soundManager.StopBGM();
         SoundManager.Instance.PauseSE(audioSource);
         SoundManager.Instance.PlayBGM(BGMtype.result);
@@ -155,6 +163,9 @@ public class GameManager : MonoBehaviour
     }
     public void OpenDoor2()
     {
+        timer.audioSource.mute = true;
+        //soundManager.audioSouceBGM.loop = false;
+        soundManager.PauseSE(timer.audioSource);
         soundManager.StopBGM();
         SoundManager.Instance.PauseSE(audioSource);
         SoundManager.Instance.PlayBGM(BGMtype.result);
@@ -177,6 +188,9 @@ public class GameManager : MonoBehaviour
    private void StartBGM()
     {
         SoundManager.Instance.PlayBGM(BGMtype.title);
+            soundManager.audioSouceBGM.loop = true;
+
+       
     }
 
     private void PauseBGM()
@@ -205,6 +219,8 @@ public class GameManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
             {
                 SceneManager.LoadScene("SecondStage");
+                soundManager.audioSouceBGM.loop = true;
+
             }
             if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
             {
@@ -228,6 +244,8 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
             {
                 SceneManager.LoadScene("FirstStage");
+                soundManager.audioSouceBGM.loop = true;
+
             }
             if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
             {

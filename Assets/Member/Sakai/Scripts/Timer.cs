@@ -19,8 +19,8 @@ public class Timer : MonoBehaviour
     {
         GameManager.Instance.PauseEvent += PauseTimer;
         GameManager.Instance.UnPauseEvent += UnPauseTimer;
-        SoundManager.Instance.StartSE(SEtype.ChangeTimer, audioSource);
-       
+
+        SoundManager.Instance.StartSE(SEtype.ChangeTimerTin, audioSource);
     }
 
     public IEnumerator ChangeTimerColor()
@@ -28,8 +28,21 @@ public class Timer : MonoBehaviour
         while (true)
         {
             BlueSprite.fillAmount -= 1.0f / CountTime * Time.deltaTime;
-            if (BlueSprite.fillAmount <= 0 || BlueSprite.fillAmount >= 1)
+            if(BlueSprite.fillAmount <= 0.75 && BlueSprite.fillAmount > 0.5f)
             {
+                SoundManager.Instance.StartSE(SEtype.ChangeTimerPon, audioSource);
+            }
+            else if (BlueSprite.fillAmount <= 0.5 && BlueSprite.fillAmount > 0.25f)
+            {
+                SoundManager.Instance.StartSE(SEtype.ChangeTimerPon, audioSource);
+            }
+           else  if (BlueSprite.fillAmount <= 0.25)
+            {
+                SoundManager.Instance.StartSE(SEtype.ChangeTimerPon, audioSource);
+            }
+           else if (BlueSprite.fillAmount <= 0 || BlueSprite.fillAmount >= 1)
+            {
+                SoundManager.Instance.StartSE(SEtype.ChangeTimerTin, audioSource);
                 BlueSprite.fillAmount = 1.0f;
                 changeTimerEvent?.Invoke();
             }

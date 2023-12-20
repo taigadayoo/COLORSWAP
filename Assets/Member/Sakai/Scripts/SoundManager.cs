@@ -64,7 +64,8 @@ public enum BGMtype@//—ñ‹“Œ^@–¼‘O‚Â‚¯‚é
 }
 public enum SEtype
 {
-    ChangeTimer,
+    ChangeTimerPon,
+    ChangeTimerTin,
     Dead,
     Reverse
 }

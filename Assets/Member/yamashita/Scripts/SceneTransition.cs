@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
+    [SerializeField] private string sceneName;
+    [SerializeField] private Color fadeColor;
+    [SerializeField] private float fadeSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,9 @@ public class SceneTransition : MonoBehaviour
         // ×ボタン押したらシーン遷移
         if (Input.GetButton("Fire2") || Input.GetKeyDown(KeyCode.M))
         {
-            SceneManager.LoadScene("StageSelection");
+
+          
+            Initiate.Fade(sceneName, fadeColor, fadeSpeed);
         }
     }
 }

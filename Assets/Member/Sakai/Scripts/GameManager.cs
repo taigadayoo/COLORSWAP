@@ -54,7 +54,11 @@ public class GameManager : MonoBehaviour
     private bool Switchnext = false;
     public bool PlayerStop = false;
     public BGMtype bgmtype;
-    
+    [SerializeField] public string sceneName1;
+    [SerializeField] public string sceneName2;
+    [SerializeField] public string sceneselection;
+    [SerializeField] public Color fadeColor;
+    [SerializeField] public float fadeSpeed;
     private void Awake()
     {
         if(Instance == null)
@@ -136,7 +140,7 @@ public class GameManager : MonoBehaviour
     public void OpenDoor()
     {
         timer.audioSource.mute = true;
-        soundManager.audioSouceBGM.loop = false;
+     
         soundManager.PauseSE(timer.audioSource);
         soundManager.StopBGM();
         SoundManager.Instance.PauseSE(audioSource);
@@ -149,8 +153,7 @@ public class GameManager : MonoBehaviour
     }
     public void GoolDoor()
     {
-       
-        //soundManager.audioSouceBGM.loop = false;
+   
         timer.audioSource.mute = true;
         soundManager.StopBGM();
         SoundManager.Instance.PauseSE(audioSource);
@@ -164,7 +167,7 @@ public class GameManager : MonoBehaviour
     public void OpenDoor2()
     {
         timer.audioSource.mute = true;
-        //soundManager.audioSouceBGM.loop = false;
+       
         soundManager.PauseSE(timer.audioSource);
         soundManager.StopBGM();
         SoundManager.Instance.PauseSE(audioSource);
@@ -218,13 +221,14 @@ public class GameManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
             {
-                SceneManager.LoadScene("SecondStage");
-                soundManager.audioSouceBGM.loop = true;
+                Initiate.Fade(sceneName2, fadeColor, fadeSpeed);
+                Debug.Log(soundManager.audioSouceBGM);
+                StartBGM();
 
             }
             if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
             {
-                SceneManager.LoadScene("Stageselection");
+                Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
 
             }
         }
@@ -236,20 +240,21 @@ public class GameManager : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
             {
-                SceneManager.LoadScene("Stageselection");
+                Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
             }
         }
         if (Nexttutobool == true && Switchnext == true)
         {
             if (Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
             {
-                SceneManager.LoadScene("FirstStage");
-                soundManager.audioSouceBGM.loop = true;
+                Initiate.Fade(sceneName1, fadeColor, fadeSpeed);
+
+                StartBGM();
 
             }
             if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
             {
-                SceneManager.LoadScene("Stageselection");
+                Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
             }
         }
     }

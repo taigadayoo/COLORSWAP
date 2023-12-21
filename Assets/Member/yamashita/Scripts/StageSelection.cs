@@ -10,6 +10,12 @@ public class StageSelection : MonoBehaviour
     [SerializeField] private GameObject _stage2;
     [SerializeField] private GameObject _stage3;
 
+    [SerializeField] public string sceneName1;
+    [SerializeField] public string sceneName2;
+    [SerializeField] public string sceneNameTuto;
+    [SerializeField] public Color fadeColor;
+    [SerializeField] public float fadeSpeed;
+
     private float beforeInput;
 
     // Start is called before the first frame update
@@ -44,16 +50,15 @@ public class StageSelection : MonoBehaviour
 
         if (_selectButton.gameObject.transform.position == _stage1.transform.position && Input.GetButton("Fire2") || _selectButton.gameObject.transform.position == _stage1.transform.position && Input.GetKeyDown(KeyCode.M))
         {
-            // âºÇÃÉVÅ[Éì
-            SceneManager.LoadScene("FirstStage");
+            Initiate.Fade(sceneName1,fadeColor, fadeSpeed);
         }
         if (_selectButton.gameObject.transform.position == _stage2.transform.position && Input.GetButton("Fire2") || _selectButton.gameObject.transform.position == _stage2.transform.position && Input.GetKeyDown(KeyCode.M))
         {
-            SceneManager.LoadScene("SecondStage");
+            Initiate.Fade(sceneName2, fadeColor, fadeSpeed);
         }
         if (_selectButton.gameObject.transform.position == _stage3.transform.position && Input.GetButton("Fire2") || _selectButton.gameObject.transform.position == _stage3.transform.position && Input.GetKeyDown(KeyCode.M))
         {
-            SceneManager.LoadScene("TutorialStage");
+            Initiate.Fade(sceneNameTuto, fadeColor, fadeSpeed);
         }
     }
 }

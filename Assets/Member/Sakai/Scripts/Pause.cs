@@ -7,6 +7,8 @@ public class Pause : MonoBehaviour
     private bool isPause = false;
     [SerializeField]
     GameObject pausePanel;
+    [SerializeField]
+    PlayerController playerController;
 
     private void Start()
     {
@@ -16,7 +18,7 @@ public class Pause : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P)|| playerController.IsPausePressed)
         {
             if (GameManager.Instance.GetIsPause())
             {

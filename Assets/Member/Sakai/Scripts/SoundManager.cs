@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;//シングルトン、どこからでも呼べるようにする
 
     [SerializeField]
-    private List<AudioClip> BGMList = new List<AudioClip>();
+   private List<AudioClip> BGMList = new List<AudioClip>();
 
     [SerializeField]
     private List<AudioClip> SEList = new List<AudioClip>();
@@ -25,15 +25,24 @@ public class SoundManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);// 壊れなくする
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
     }
+    
     public void PlayBGM(BGMtype bgmtype)
     {
         audioSouceBGM.clip = BGMList[(int)bgmtype]; //clipの中にListの中の曲入れる
         audioSouceBGM.Play();
+        if(bgmtype == BGMtype.title)
+        {
+            audioSouceBGM.loop = true;
+        }
+        else if(bgmtype == BGMtype.result)
+        {
+            audioSouceBGM.loop = false;
+        }
 
     }
     public void StopBGM()

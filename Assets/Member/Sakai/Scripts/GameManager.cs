@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     private Rigidbody2D otherRigidbody;
     private bool Nextbool = false;
     private bool Next2bool = false;
+    private bool Next3bool = false;
     private bool Nexttutobool = false;
     private bool isPause;
     private bool Switchnext = false;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     public BGMtype bgmtype;
     [SerializeField] public string sceneName1;
     [SerializeField] public string sceneName2;
+    [SerializeField] public string sceneName3;
     [SerializeField] public string sceneselection;
     [SerializeField] public Color fadeColor;
     [SerializeField] public float fadeSpeed;
@@ -177,7 +179,19 @@ public class GameManager : MonoBehaviour
         PlayerStop = true;
         Invoke("SwitchNext", 2.0f);
     }
-
+    public void OpenDoor3()
+    {
+        timer.audioSource.mute = true;
+        soundManager.PauseSE(timer.audioSource);
+        soundManager.StopBGM();
+        SoundManager.Instance.PauseSE(audioSource);
+        StartClearBGM();
+        animatorBack();
+        Invoke("animatorNext", 0.2f);
+        Next3bool = true;
+        PlayerStop = true;
+        Invoke("SwitchNext", 2.0f);
+    }
     public void ActivateLever()
     {
         if (targetScript != null)
@@ -240,6 +254,19 @@ public class GameManager : MonoBehaviour
             }
         }
         if (Next2bool == true && Switchnext == true)
+        {
+            if (Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
+            {
+                Initiate.Fade(sceneName3, fadeColor, fadeSpeed);
+                soundManager.audioSouceBGM.clip = null;
+            }
+            if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
+            {
+                Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
+                soundManager.audioSouceBGM.clip = null;
+            }
+        }
+        if (Next3bool == true && Switchnext == true)
         {
             if (Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
             {

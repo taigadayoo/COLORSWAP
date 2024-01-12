@@ -36,6 +36,12 @@ public class PlayerGimik : MonoBehaviour
             gameManager.OpenDoor2();
 
         }
+        if (other.gameObject.tag == "Door3")
+        {
+
+            gameManager.OpenDoor3();
+
+        }
     }
 
    

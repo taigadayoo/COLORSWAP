@@ -9,7 +9,8 @@ public class FloorMove : MonoBehaviour
     private enum Direction
     {
         Side,
-        Vertical
+        Vertical,
+        StopSide
     }
        [SerializeField]
     Direction direction;
@@ -71,6 +72,11 @@ public class FloorMove : MonoBehaviour
             // ˆÚ“®
             rb.velocity = new Vector3(currentVelocity * moveSpeed, 0, 0);
 
+        }
+        if(direction == Direction.StopSide)
+        {
+            float newPosition = transform.position.x + moveSpeed * Time.deltaTime;
+            transform.position = new Vector3(newPosition, transform.position.y,transform.position.z);
         }
     }
 }

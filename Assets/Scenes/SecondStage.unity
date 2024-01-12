@@ -1390,6 +1390,7 @@ MonoBehaviour:
   bgmtype: 0
   sceneName1: FirstStage
   sceneName2: SecondStage
+  sceneName3: ThirdStage
   sceneselection: StageSelection
   fadeColor: {r: 1, g: 1, b: 1, a: 1}
   fadeSpeed: 1

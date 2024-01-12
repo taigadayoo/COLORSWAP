@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SecondStage.unity
     guid: ed214de479d931f478c5a25c67a71cb7
   - enabled: 1
+    path: Assets/Scenes/ThirdStage.unity
+    guid: 675306e5121a9c94bbfaeda7c81d7eab
+  - enabled: 1
     path: Assets/Member/Sakai/Scene/Clear.unity
     guid: b13742dd049051648a56835f1a4f2021
   m_configObjects:

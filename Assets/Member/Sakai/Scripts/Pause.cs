@@ -20,14 +20,16 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P)|| playerController.IsPausePressed)
         {
+            Debug.Log("Aa");
             if (GameManager.Instance.GetIsPause())
             {
                 GameManager.Instance.UnPauseEvent?.Invoke();
+               
             }
             else
             {
                 GameManager.Instance.PauseEvent?.Invoke();
-
+               
             }
         }
     }

@@ -20,9 +20,7 @@ public class SceneTransition : MonoBehaviour
         // ×ボタン押したらシーン遷移
         if (Input.GetButton("Fire2") || Input.GetKeyDown(KeyCode.M))
         {
-
-          
-            Initiate.Fade(sceneName, fadeColor, fadeSpeed);
+           Initiate.Fade(sceneName, fadeColor, fadeSpeed);
         }
     }
 }

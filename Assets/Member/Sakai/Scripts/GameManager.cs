@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.Haptics;
+
+public class DualShock4GamepadClear : DualShockGamepad, IDualShockHaptics, IDualMotorRumble, IHaptics, IEventPreProcessor
+{
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -37,6 +43,7 @@ public class GameManager : MonoBehaviour
     public GameObject flag;
     public GameObject lever;
     public GameObject moveStage;
+   
 
     [SerializeField]
      private SoundManager soundManager;
@@ -53,6 +60,7 @@ public class GameManager : MonoBehaviour
     private bool Nexttutobool = false;
     private bool isPause;
     private bool Switchnext = false;
+    private bool PadClearSwitch = false;
     public bool PlayerStop = false;
     public BGMtype bgmtype;
     [SerializeField] public string sceneName1;
@@ -148,6 +156,7 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PauseSE(audioSource);
         StartClearBGM();
         animatorBack();
+        InvokeRepeating("PadClear", 0f, 0.1f);
         Invoke("animatorNext", 0.2f);
         Nextbool = true;
         PlayerStop = true;
@@ -161,6 +170,7 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PauseSE(audioSource);
         StartClearBGM();
         animatorBack();
+        InvokeRepeating("PadClear", 0f, 0.1f);
         Invoke("animatorNext", 0.2f);
         Next2bool = true;
         PlayerStop = true;
@@ -174,6 +184,7 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PauseSE(audioSource);
         StartClearBGM();
         animatorBack();
+        InvokeRepeating("PadClear", 0f, 0.1f);
         Invoke("animatorNext", 0.2f);      
         Nexttutobool = true;
         PlayerStop = true;
@@ -187,6 +198,7 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PauseSE(audioSource);
         StartClearBGM();
         animatorBack();
+        InvokeRepeating("PadClear", 0f, 0.1f);
         Invoke("animatorNext", 0.2f);
         Next3bool = true;
         PlayerStop = true;
@@ -235,6 +247,23 @@ public class GameManager : MonoBehaviour
     private void animatorNext()
     {
         animator2.SetTrigger("NextSelect");
+    }
+    private void PadClear()
+    {
+        string[] joystickNamesClear = Input.GetJoystickNames();
+        if (joystickNamesClear.Length > 0 && !string.IsNullOrEmpty(joystickNamesClear[0]))
+        {
+            if (!PadClearSwitch)
+            {
+                DualShock4GamepadClear.current.SetLightBarColor(Color.white);
+                PadClearSwitch = true;
+            }
+            else if (PadClearSwitch)
+            {
+                DualShock4GamepadClear.current.SetLightBarColor(Color.blue);
+                PadClearSwitch = false;
+            }
+        }
     }
     void Update()
     {

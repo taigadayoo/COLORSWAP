@@ -183,6 +183,13 @@ MonoBehaviour:
   _stage3: {fileID: 344055309}
   _stage4: {fileID: 1390361013}
   _stage5: {fileID: 1905640748}
+  Stage1: FirstStage
+  Stage2: SecondStage
+  Stage3: ThirdStage
+  Stage4: 
+  Stage5: TutorialStage
+  fadeColor: {r: 1, g: 1, b: 1, a: 1}
+  fadeSpeed: 1
 --- !u!1 &222050919
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ebec5ac5a9fa358479f0e728dfaa6d29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f20891e5ebdd26740a6c32b89d81ff97, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

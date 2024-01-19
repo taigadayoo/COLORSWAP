@@ -12,6 +12,14 @@ public class StageSelection : MonoBehaviour
     [SerializeField] private GameObject _stage4;
     [SerializeField] private GameObject _stage5;
 
+    [SerializeField] private string Stage1;
+    [SerializeField] private string Stage2;
+    [SerializeField] private string Stage3;
+    [SerializeField] private string Stage4;
+    [SerializeField] private string Stage5;
+    [SerializeField] private Color fadeColor;
+    [SerializeField] private float fadeSpeed;
+
     private float beforeInput;
     private int sizeX = 1920;
 
@@ -73,24 +81,23 @@ public class StageSelection : MonoBehaviour
 
         if (buttonPos == _stage1.transform.position && Input.GetButton("Fire2"))
         {
-            // âºÇÃÉVÅ[Éì
-            SceneManager.LoadScene("StageN");
+            Initiate.Fade(Stage1, fadeColor, fadeSpeed);
         }
         if (buttonPos == _stage2.transform.position && Input.GetButton("Fire2"))
         {
-            SceneManager.LoadScene("StageN");
+            Initiate.Fade(Stage2, fadeColor, fadeSpeed);
         }
         if (buttonPos == _stage3.transform.position && Input.GetButton("Fire2"))
         {
-            SceneManager.LoadScene("StageN");
+            Initiate.Fade(Stage3, fadeColor, fadeSpeed);
         }
         if (buttonPos == _stage4.transform.position && Input.GetButton("Fire2"))
         {
-            SceneManager.LoadScene("StageN");
+            Initiate.Fade(Stage4, fadeColor, fadeSpeed);
         }
         if (buttonPos == _stage5.transform.position && Input.GetButton("Fire2"))
         {
-            SceneManager.LoadScene("StageN");
+            Initiate.Fade(Stage5, fadeColor, fadeSpeed);
         }
     }
 

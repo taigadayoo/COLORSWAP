@@ -30,7 +30,7 @@ public class StageSelection : MonoBehaviour
         
         float select = Input.GetAxis("Horizontal");
         // 右のステージに移動
-        if (select > 0f && beforeInput == 0f)
+        if (Input.GetKeyDown(KeyCode.RightArrow)|| select > 0f && beforeInput == 0f)
         {
             if (buttonPos == _stage1.transform.position)
             {
@@ -54,7 +54,7 @@ public class StageSelection : MonoBehaviour
             }
         }
         // 左のステージに移動
-        else if (select < 0f && beforeInput == 0f)
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || select < 0f && beforeInput == 0f)
         {
             if (buttonPos == _stage1.transform.position)
             {
@@ -79,23 +79,23 @@ public class StageSelection : MonoBehaviour
         }
         beforeInput = select;
 
-        if (buttonPos == _stage1.transform.position && Input.GetButton("Fire2"))
+        if (buttonPos == _stage1.transform.position && Input.GetButton("Fire2") || Input.GetKeyDown(KeyCode.M) && buttonPos == _stage1.transform.position)
         {
             Initiate.Fade(Stage1, fadeColor, fadeSpeed);
         }
-        if (buttonPos == _stage2.transform.position && Input.GetButton("Fire2"))
+        if (buttonPos == _stage2.transform.position && Input.GetButton("Fire2") || Input.GetKeyDown(KeyCode.M) && buttonPos == _stage2.transform.position)
         {
             Initiate.Fade(Stage2, fadeColor, fadeSpeed);
         }
-        if (buttonPos == _stage3.transform.position && Input.GetButton("Fire2"))
+        if (buttonPos == _stage3.transform.position && Input.GetButton("Fire2") || Input.GetKeyDown(KeyCode.M) && buttonPos == _stage3.transform.position)
         {
             Initiate.Fade(Stage3, fadeColor, fadeSpeed);
         }
-        if (buttonPos == _stage4.transform.position && Input.GetButton("Fire2"))
+        if (buttonPos == _stage4.transform.position && Input.GetButton("Fire2") || Input.GetKeyDown(KeyCode.M) && buttonPos == _stage4.transform.position)
         {
             Initiate.Fade(Stage4, fadeColor, fadeSpeed);
         }
-        if (buttonPos == _stage5.transform.position && Input.GetButton("Fire2"))
+        if (buttonPos == _stage5.transform.position && Input.GetButton("Fire2") || Input.GetKeyDown(KeyCode.M) && buttonPos == _stage5.transform.position)
         {
             Initiate.Fade(Stage5, fadeColor, fadeSpeed);
         }

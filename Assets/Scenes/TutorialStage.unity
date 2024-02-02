@@ -1181,7 +1181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
       propertyPath: m_Size.x
-      value: 16.666063
+      value: 11.417225
       objectReference: {fileID: 0}
     - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
       propertyPath: m_Size.y
@@ -1189,11 +1189,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
       propertyPath: m_Offset.x
-      value: -0.20729733
+      value: 2.417122
       objectReference: {fileID: 0}
     - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
       propertyPath: m_Offset.y
       value: 0.07788277
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -3407,7 +3411,7 @@ MonoBehaviour:
   BGMList:
   - {fileID: 8300000, guid: 48041de5f2e64a04abde74cf3380d252, type: 3}
   - {fileID: 0}
-  - {fileID: 8300000, guid: 785d3d443b5d9c947a262cb87bc890a8, type: 3}
+  - {fileID: 8300000, guid: 1f273ab4ab84f0943a1e49e80f5ae0b3, type: 3}
   SEList:
   - {fileID: 8300000, guid: aadcf8559a35a154a9982be658827ca5, type: 3}
   - {fileID: 8300000, guid: f4487250346079e429971e8ff39edab1, type: 3}
@@ -4376,9 +4380,11 @@ MonoBehaviour:
   player: {fileID: 622930950}
   savePoint: {fileID: 1005277594}
   targetScript: {fileID: 587963965}
+  targetScript2: {fileID: 0}
   door: {fileID: 480937700}
   flag: {fileID: 771259884}
   lever: {fileID: 1796050092}
+  lever2: {fileID: 0}
   moveStage: {fileID: 587963964}
   soundManager: {fileID: 1454628361}
   newleverSprite: {fileID: 21300000, guid: 09c3c754bdf9b0a488bd24633c8c7312, type: 3}
@@ -4388,6 +4394,8 @@ MonoBehaviour:
   sceneName1: FirstStage
   sceneName2: SecondStage
   sceneName3: 
+  sceneName4: 
+  sceneNameClear: 
   sceneselection: StageSelection
   fadeColor: {r: 1, g: 1, b: 1, a: 1}
   fadeSpeed: 1
@@ -4453,7 +4461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980237782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8082, y: -396, z: -51.112976}
+  m_LocalPosition: {x: 7998, y: -396, z: -51.112976}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

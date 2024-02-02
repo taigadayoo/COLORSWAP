@@ -10,13 +10,15 @@ public class FloorMove : MonoBehaviour
     {
         Side,
         Vertical,
-        StopSide
+        StopSide,
+        StopVertical
     }
        [SerializeField]
     Direction direction;
     public float moveSpeed = 500.0f; // ˆÚ“®‘¬“x
     public float maxHeight = 250.0f; // ãŒÀ‚‚³
     public float minHeight = -250.0f; // ‰ºŒÀ‚‚³
+    public float Stoppos = 500f;
 
     public bool isReversing = false;
 
@@ -74,9 +76,24 @@ public class FloorMove : MonoBehaviour
 
         }
         if(direction == Direction.StopSide)
-        {
+        {       
             float newPosition = transform.position.x + moveSpeed * Time.deltaTime;
+            if(this.transform.position.x >= Stoppos)
+            {
+
+                this.enabled = false;
+            }
             transform.position = new Vector3(newPosition, transform.position.y,transform.position.z);
+        }
+        if (direction == Direction.StopVertical)
+        {
+           
+            float newPosition = transform.position.y + moveSpeed * Time.deltaTime;
+            if (this.transform.position.y >= Stoppos)
+            {
+                this.enabled = false;
+            }
+            transform.position = new Vector3(transform.position.x, newPosition, transform.position.z);
         }
     }
 }

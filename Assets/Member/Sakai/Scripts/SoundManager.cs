@@ -19,12 +19,12 @@ public class SoundManager : MonoBehaviour
     
     private void Awake()
     {
-
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);// ‰ó‚ê‚È‚­‚·‚é
-        }
+        Instance = this;
+        //if(Instance == null)
+        //{
+        //    Instance = this;
+        //    DontDestroyOnLoad(gameObject);// ‰ó‚ê‚È‚­‚·‚é
+        //}
         //else
         //{
         //    Destroy(gameObject);

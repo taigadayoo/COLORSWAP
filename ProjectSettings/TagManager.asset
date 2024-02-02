@@ -16,6 +16,8 @@ TagManager:
   - Stage3
   - Gooltutolial
   - Door3
+  - Door4
+  - lever2
   layers:
   - Default
   - TransparentFX

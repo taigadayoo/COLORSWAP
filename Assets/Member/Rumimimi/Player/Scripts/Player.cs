@@ -116,7 +116,34 @@ public class Player : MonoBehaviour
             _animator.SetBool("IsMove",true);
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       if( collision.gameObject.tag == "Door")
+        {
+            _animator.SetBool("IsMove", false);
+            _animator.SetBool("IsGoal",true);
+        }
+        if (collision.gameObject.tag == "Gool")
+        {
+            _animator.SetBool("IsMove", false);
+            _animator.SetBool("IsGoal", true);
+        }
+        if (collision.gameObject.tag == "Gooltutolial")
+        {
+            _animator.SetBool("IsMove", false);
+            _animator.SetBool("IsGoal", true);
+        }
+        if (collision.gameObject.tag == "Door3")
+        {
+            _animator.SetBool("IsMove", false);
+            _animator.SetBool("IsGoal", true);
+        }
+        if (collision.gameObject.tag == "Door4")
+        {
+            _animator.SetBool("IsMove", false);
+            _animator.SetBool("IsGoal", true);
+        }
+    }
     /// <summary>
     /// ジャンプの制御をするメソッド
     /// </summary>

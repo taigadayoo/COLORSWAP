@@ -15,7 +15,7 @@ public class PlayerGimik : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
       
         if (other.gameObject.tag == "Door")
@@ -42,12 +42,12 @@ public class PlayerGimik : MonoBehaviour
             gameManager.OpenDoor3();
 
         }
-    }
+        if (other.gameObject.tag == "Door4")
+        {
 
-   
+            gameManager.OpenDoor4();
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
+        }
         if (other.gameObject.tag == "Dead")
         {
             player.Dead();
@@ -58,14 +58,23 @@ public class PlayerGimik : MonoBehaviour
 
             gameManager.SetSavePoint(other.gameObject);
 
-          
+
         }
         if (other.gameObject.tag == "lever")
         {
             // LeverのアクティベーションをGameManagerに委任
             gameManager.ActivateLever();
         }
+        if (other.gameObject.tag == "lever2")
+        {
+            // LeverのアクティベーションをGameManagerに委任
+            gameManager.ActivateLever2();
+        }
     }
+
+   
+
+    
 
     void OnCollisionEnter(Collision col)
     {

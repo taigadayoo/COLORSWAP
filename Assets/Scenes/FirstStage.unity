@@ -665,7 +665,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278840666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -117, y: 611, z: 0}
+  m_LocalPosition: {x: -57, y: 611, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -952,6 +952,7 @@ MonoBehaviour:
   moveSpeed: 450
   maxHeight: 700
   minHeight: 80
+  Stoppos: 500
   isReversing: 0
   rb: {fileID: 0}
 --- !u!1 &509515831
@@ -2302,9 +2303,11 @@ MonoBehaviour:
   player: {fileID: 1670033934}
   savePoint: {fileID: 1184807339}
   targetScript: {fileID: 454762961}
+  targetScript2: {fileID: 0}
   door: {fileID: 729322320}
   flag: {fileID: 1184807339}
   lever: {fileID: 335768088}
+  lever2: {fileID: 0}
   moveStage: {fileID: 454762949}
   soundManager: {fileID: 1655204074}
   newleverSprite: {fileID: 21300000, guid: 09c3c754bdf9b0a488bd24633c8c7312, type: 3}
@@ -2314,6 +2317,8 @@ MonoBehaviour:
   sceneName1: FirstStage
   sceneName2: SecondStage
   sceneName3: 
+  sceneName4: 
+  sceneNameClear: 
   sceneselection: StageSelection
   fadeColor: {r: 1, g: 1, b: 1, a: 1}
   fadeSpeed: 1
@@ -3266,7 +3271,7 @@ MonoBehaviour:
   BGMList:
   - {fileID: 8300000, guid: 48041de5f2e64a04abde74cf3380d252, type: 3}
   - {fileID: 0}
-  - {fileID: 8300000, guid: 785d3d443b5d9c947a262cb87bc890a8, type: 3}
+  - {fileID: 8300000, guid: 1f273ab4ab84f0943a1e49e80f5ae0b3, type: 3}
   SEList:
   - {fileID: 8300000, guid: aadcf8559a35a154a9982be658827ca5, type: 3}
   - {fileID: 8300000, guid: f4487250346079e429971e8ff39edab1, type: 3}
@@ -3934,7 +3939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
       propertyPath: m_Size.x
-      value: 16.414654
+      value: 12.289894
       objectReference: {fileID: 0}
     - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
       propertyPath: m_Size.y
@@ -3942,11 +3947,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
       propertyPath: m_Offset.x
-      value: 0.049995422
+      value: -2.0123842
       objectReference: {fileID: 0}
     - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
       propertyPath: m_Offset.y
-      value: 0.06287432
+      value: 0.06287384
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7816029035713201898, guid: 3112e662beb96e8438cf6d607cef91ab, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -4355,8 +4364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf4e29d51a8887a4dbb15eda39588e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausePanel: {fileID: 6174320872491348921}
-  playerController: {fileID: 1670033944}
 --- !u!1 &6174320872218269443
 GameObject:
   m_ObjectHideFlags: 0

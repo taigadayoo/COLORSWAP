@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "sceneSelect",
+                    "type": "Button",
+                    "id": "566030bd-f7a1-4b4e-8a40-8c20c95a7f30",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -335,7 +344,7 @@
                 {
                     "name": "",
                     "id": "e93d17b4-f399-434a-bfcc-862b1e497cc6",
-                    "path": "<Gamepad>/start",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -357,7 +366,7 @@
                 {
                     "name": "",
                     "id": "1d1e351a-f894-4140-bfae-eb3d13124058",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -368,11 +377,22 @@
                 {
                     "name": "",
                     "id": "fb91e1e5-4c49-47a7-b54e-6531542bf743",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Title",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8460e5eb-f230-4615-b869-8fef2670a469",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "sceneSelect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

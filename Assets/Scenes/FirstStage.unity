@@ -1067,7 +1067,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509515831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1869, y: -583, z: -10}
+  m_LocalPosition: {x: -1584, y: -594, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2230,7 +2230,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016586664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1869, y: -583, z: -10}
+  m_LocalPosition: {x: -1584, y: -594, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2320,6 +2320,7 @@ MonoBehaviour:
   sceneName4: 
   sceneNameClear: 
   sceneselection: StageSelection
+  title: Title
   fadeColor: {r: 1, g: 1, b: 1, a: 1}
   fadeSpeed: 1
 --- !u!114 &1029437974
@@ -2797,11 +2798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1097491685088764071, guid: deb3f1bd2ca07e74ca15ed7f5f8b61ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1869
+      value: -1584
       objectReference: {fileID: 0}
     - target: {fileID: 1097491685088764071, guid: deb3f1bd2ca07e74ca15ed7f5f8b61ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -583
+      value: -594
       objectReference: {fileID: 0}
     - target: {fileID: 1097491685088764071, guid: deb3f1bd2ca07e74ca15ed7f5f8b61ba, type: 3}
       propertyPath: m_LocalPosition.z

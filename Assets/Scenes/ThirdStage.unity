@@ -1396,6 +1396,7 @@ MonoBehaviour:
   sceneName4: FourStage
   sceneNameClear: 
   sceneselection: StageSelection
+  title: Title
   fadeColor: {r: 1, g: 1, b: 1, a: 1}
   fadeSpeed: 1
 --- !u!4 &748315597
@@ -2558,13 +2559,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395515618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.463365}
-  m_LocalScale: {x: 0.046336498, y: 0.046336498, z: 0.046336498}
+  m_LocalPosition: {x: -6033, y: -1349, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 486188213}
-  m_Father: {fileID: 1465353186}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1417296143 stripped
 MonoBehaviour:
@@ -3491,7 +3492,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1579817025
 MonoBehaviour:
@@ -3929,7 +3930,7 @@ RectTransform:
   - {fileID: 694391864}
   - {fileID: 392619039}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

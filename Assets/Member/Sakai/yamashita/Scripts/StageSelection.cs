@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class StageSelection : MonoBehaviour
 {
@@ -11,25 +12,47 @@ public class StageSelection : MonoBehaviour
     [SerializeField] private GameObject _stage3;
     [SerializeField] private GameObject _stage4;
     [SerializeField] private GameObject _stage5;
+    [SerializeField]
+    private InputActionAsset inputActions;
 
+    public bool IsTitlePressed { get; set; }
+    private InputAction titleAction;
     [SerializeField] private string Stage1;
     [SerializeField] private string Stage2;
     [SerializeField] private string Stage3;
     [SerializeField] private string Stage4;
     [SerializeField] private string Stage5;
+    [SerializeField] public string title;
     [SerializeField] private Color fadeColor;
     [SerializeField] private float fadeSpeed;
 
     private float beforeInput;
     private int sizeX = 1920;
+    private void Awake()
+    {
+        titleAction = inputActions.FindAction("Title");
+    }
+    private void OnEnable()
+    {
+        titleAction.Enable();
+    }
+    private void OnDisable()
+    {
+        titleAction.Disable();
+    }
 
     // Update is called once per frame
     void Update()
     {
         var buttonPos = _selectButton.gameObject.transform.position;
-        
+        IsTitlePressed = titleAction.triggered;
         float select = Input.GetAxis("Horizontal");
         // 右のステージに移動
+        if (IsTitlePressed)
+        {
+            Initiate.Fade(title, fadeColor, fadeSpeed);
+          
+        }
         if (Input.GetKeyDown(KeyCode.RightArrow)|| select > 0f && beforeInput == 0f)
         {
             if (buttonPos == _stage1.transform.position)

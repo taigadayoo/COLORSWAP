@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public string sceneName4;
     [SerializeField] public string sceneNameClear;
     [SerializeField] public string sceneselection;
+    [SerializeField] public string title;
     [SerializeField] public Color fadeColor;
     [SerializeField] public float fadeSpeed;
     private void Awake()
@@ -170,8 +171,8 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PauseSE(audioSource);
         StartClearBGM();
         InvokeRepeating("PadClear", 0f, 0.1f);
-        Invoke("animatorBack", 0.4f);
-        Invoke("animatorNext", 0.6f);
+        Invoke("animatorBack", 0.8f);
+        Invoke("animatorNext", 1.0f);
         Nextbool = true;
         PlayerStop = true;
         Invoke("SwitchNext", 2.0f);
@@ -184,8 +185,8 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PauseSE(audioSource);
         StartClearBGM();
         InvokeRepeating("PadClear", 0f, 0.1f);
-        Invoke("animatorBack", 0.4f);
-        Invoke("animatorNext", 0.6f);
+        Invoke("animatorBack", 0.8f);
+        Invoke("animatorNext", 1.0f);
         Next2bool = true;
         PlayerStop = true;
         Invoke("SwitchNext", 2.0f);
@@ -198,8 +199,8 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PauseSE(audioSource);
         StartClearBGM();
         InvokeRepeating("PadClear", 0f, 0.1f);
-        Invoke("animatorBack", 0.4f);
-        Invoke("animatorNext", 0.6f);
+        Invoke("animatorBack", 0.8f);
+        Invoke("animatorNext", 1.0f);
         Nexttutobool = true;
         PlayerStop = true;
         Invoke("SwitchNext", 2.0f);
@@ -212,8 +213,8 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PauseSE(audioSource);
         StartClearBGM();
         InvokeRepeating("PadClear", 0f, 0.1f);
-        Invoke("animatorBack", 0.4f);
-        Invoke("animatorNext", 0.6f);
+        Invoke("animatorBack", 0.8f);
+        Invoke("animatorNext", 1.0f);
         Next3bool = true;
         PlayerStop = true;
         Invoke("SwitchNext", 2.0f);
@@ -226,8 +227,8 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PauseSE(audioSource);
         StartClearBGM();
         InvokeRepeating("PadClear", 0f, 0.1f);
-        Invoke("animatorBack", 0.4f);
-        Invoke("animatorNext", 0.6f);
+        Invoke("animatorBack", 0.8f);
+        Invoke("animatorNext", 1.0f);
         Next4bool = true;
         PlayerStop = true;
         Invoke("SwitchNext", 2.0f);
@@ -255,6 +256,7 @@ public class GameManager : MonoBehaviour
     }
     private void StartClearBGM()
     {
+        soundManager.audioSouceBGM.volume = 2.0f;
         SoundManager.Instance.PlayBGM(BGMtype.result);
 
     }
@@ -303,72 +305,80 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        if(playerController.IsTitlePressed)
+        {
+            Initiate.Fade(title, fadeColor, fadeSpeed);
+            soundManager.audioSouceBGM.clip = null;
+            soundManager.PauseSE(timer.audioSource);
+            SoundManager.Instance.PauseSE(audioSource);
+            timer.audioSource.mute = true;
+        }
        if(Nextbool == true && Switchnext == true)
         {
-            if(Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
+            if(Input.GetKeyDown(KeyCode.M) || playerController.IsSelectPressed)
             {
-                Initiate.Fade(sceneName2, fadeColor, fadeSpeed);
+                Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
                 soundManager.audioSouceBGM.clip = null;
 
             }
-            if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
+            if (Input.GetKeyDown(KeyCode.N) || playerController.IsNextPressed)
             {
-                Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
+                Initiate.Fade(sceneName2, fadeColor, fadeSpeed);
                 soundManager.audioSouceBGM.clip = null;
 
             }
         }
         if (Next2bool == true && Switchnext == true)
         {
-            if (Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
+            if (Input.GetKeyDown(KeyCode.M) || playerController.IsSelectPressed)
             {
-                Initiate.Fade(sceneName3, fadeColor, fadeSpeed);
+                Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
                 soundManager.audioSouceBGM.clip = null;
             }
-            if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
+            if (Input.GetKeyDown(KeyCode.N) || playerController.IsNextPressed)
             {
-                
-                Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
+
+                Initiate.Fade(sceneName3, fadeColor, fadeSpeed);
                 soundManager.audioSouceBGM.clip = null;
                 
             }
         }
         if (Next3bool == true && Switchnext == true)
         {
-            if (Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
-            {
-                Initiate.Fade(sceneName4, fadeColor, fadeSpeed);
-                soundManager.audioSouceBGM.clip = null;
-            }
-            if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
+            if (Input.GetKeyDown(KeyCode.M) || playerController.IsSelectPressed)
             {
                 Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
+                soundManager.audioSouceBGM.clip = null;
+            }
+            if (Input.GetKeyDown(KeyCode.N) || playerController.IsNextPressed)
+            {
+                Initiate.Fade(sceneName4, fadeColor, fadeSpeed);
                 soundManager.audioSouceBGM.clip = null;
             }
         }
         if (Next4bool == true && Switchnext == true)
         {
-            if (Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
-            {
-                Initiate.Fade(sceneNameClear, fadeColor, fadeSpeed);
-                soundManager.audioSouceBGM.clip = null;
-            }
-            if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
+            if (Input.GetKeyDown(KeyCode.M) || playerController.IsSelectPressed)
             {
                 Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
+                soundManager.audioSouceBGM.clip = null;
+            }
+            if (Input.GetKeyDown(KeyCode.N) || playerController.IsNextPressed)
+            {
+                Initiate.Fade(sceneNameClear, fadeColor, fadeSpeed);
                 soundManager.audioSouceBGM.clip = null;
             }
         }
         if (Nexttutobool == true && Switchnext == true)
         {
-            if (Input.GetKeyDown(KeyCode.M) || playerController.IsNextPressed)
-            {
-                Initiate.Fade(sceneName1, fadeColor, fadeSpeed);
-                soundManager.audioSouceBGM.clip = null;
-            }
-            if (Input.GetKeyDown(KeyCode.N) || playerController.IsTitlePressed)
+            if (Input.GetKeyDown(KeyCode.M) || playerController.IsSelectPressed)
             {
                 Initiate.Fade(sceneselection, fadeColor, fadeSpeed);
+                soundManager.audioSouceBGM.clip = null;
+            }
+            if (Input.GetKeyDown(KeyCode.N) || playerController.IsNextPressed)
+            {
+                Initiate.Fade(sceneName1, fadeColor, fadeSpeed);
                 soundManager.audioSouceBGM.clip = null;
             }
         }

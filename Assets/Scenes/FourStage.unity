@@ -3833,7 +3833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5648999199972850683, guid: 2bcd11ea7aeee2a4ea3c3812960bcfed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -585
+      value: -592
       objectReference: {fileID: 0}
     - target: {fileID: 5648999199972850683, guid: 2bcd11ea7aeee2a4ea3c3812960bcfed, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4743,6 +4743,7 @@ MonoBehaviour:
   sceneName4: FourStage
   sceneNameClear: Clear
   sceneselection: StageSelection
+  title: Title
   fadeColor: {r: 1, g: 1, b: 1, a: 1}
   fadeSpeed: 1
 --- !u!114 &1198258665

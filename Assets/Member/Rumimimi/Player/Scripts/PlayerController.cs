@@ -15,12 +15,15 @@ public class PlayerController : MonoBehaviour
 
     public bool IsTitlePressed { get; set; }
 
+    public bool IsSelectPressed { get; set; }
+
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction gravityReverseAction;
     private InputAction pauseAction;
     private InputAction nextAction;
     private InputAction titleAction;
+    private InputAction selectAction;
 
     private void Awake()
     {
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
         pauseAction = inputActions.FindAction("Pause");
         nextAction = inputActions.FindAction("Next");
         titleAction = inputActions.FindAction("Title");
+       selectAction= inputActions.FindAction("sceneSelect");
     }
 
     private void OnEnable()
@@ -42,6 +46,7 @@ public class PlayerController : MonoBehaviour
         pauseAction.Enable();
         nextAction.Enable();
         titleAction.Enable();
+        selectAction.Enable();
     }
 
     private void OnDisable()
@@ -53,6 +58,7 @@ public class PlayerController : MonoBehaviour
         pauseAction.Disable();
         nextAction.Disable();
         titleAction.Disable();
+        selectAction.Disable();
     }
 
     private void Update()
@@ -63,7 +69,8 @@ public class PlayerController : MonoBehaviour
         IsPausePressed = pauseAction.triggered;
         IsTitlePressed = titleAction.triggered;
         IsNextPressed = nextAction.triggered;
-        
+        IsSelectPressed = selectAction.triggered;
+
         // Vector2型の値として入力を読み取る
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
         Horizontal = moveInput.x; // X軸（水平方向）の値を取得

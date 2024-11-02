@@ -96,4 +96,23 @@ public class FloorMove : MonoBehaviour
             transform.position = new Vector3(transform.position.x, newPosition, transform.position.z);
         }
     }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        // プレイヤーが床に触れたときの処理
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // プレイヤーを床の子オブジェクトにする
+            other.transform.SetParent(transform);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        // プレイヤーが床から離れたときの処理
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // プレイヤーの親をリセットする
+            other.transform.SetParent(null);
+        }
+    }
 }

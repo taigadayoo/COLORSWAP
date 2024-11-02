@@ -7,66 +7,75 @@ using System;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem.Haptics;
-
 public class DualShock4GamepadClear : DualShockGamepad, IDualShockHaptics, IDualMotorRumble, IHaptics, IEventPreProcessor
 {
 }
 
+// ゲーム全体の管理を行うGameManagerクラス
 public class GameManager : MonoBehaviour
 {
+    // タイマー、オーディオ、プレイヤー、アニメーター、移動床などの各種コンポーネントをシリアライズ
     [SerializeField]
-    public Timer timer;
+    public Timer timer; // ゲームのタイマー
     [SerializeField]
-    private AudioSource audioSourc2;
-    [SerializeField] private InputAction _action;
+    private AudioSource audioSourc2; // オーディオソース（未使用）
+    [SerializeField] private InputAction _action; // 入力アクション
     [SerializeField]
-    PlayerController playerController;
-   [SerializeField]
-    Animator animator;
+    PlayerController playerController; // プレイヤーコントローラー
     [SerializeField]
-    Animator animator2;
+    Animator animator; // アニメーター1
     [SerializeField]
-   private FloorMove floorMove;
-    public static GameManager Instance;
+    Animator animator2; // アニメーター2
+    [SerializeField]
+    private FloorMove floorMove; // 移動床の管理
 
+    public static GameManager Instance; // シングルトンインスタンス
+
+    // イベントハンドラーのデリゲート定義
     public delegate void PaudeHandller();
     public PaudeHandller PauseEvent;
     public delegate void UnPauseHandller();
     public PaudeHandller UnPauseEvent;
+
+    // その他のオブジェクトやコンポーネント
     [SerializeField]
-    private AudioSource audioSource;
+    private AudioSource audioSource; // メインオーディオソース
     [SerializeField]
-    public GameObject player;
-    public GameObject savePoint;
-    public MonoBehaviour targetScript = null;
-    public MonoBehaviour targetScript2 = null;
-    public GameObject door;
-    public GameObject flag;
-    public GameObject lever;
-    public GameObject lever2;
-    public GameObject moveStage;
-   
+    public GameObject player; // プレイヤーオブジェクト
+    public GameObject savePoint; // セーブポイント
+    public MonoBehaviour targetScript = null; // ターゲットスクリプト
+    public MonoBehaviour targetScript2 = null; // ターゲットスクリプト2
+    public GameObject door; // ドアオブジェクト
+    public GameObject flag; // フラグオブジェクト
+    public GameObject lever; // レバーオブジェクト
+    public GameObject lever2; // もう一つのレバーオブジェクト
+    public GameObject moveStage; // 移動ステージ
 
     [SerializeField]
-     private SoundManager soundManager;
-    public Sprite newleverSprite;
-    private SpriteRenderer leverimage;
-    private SpriteRenderer leverimage2;
+    private SoundManager soundManager; // サウンドマネージャー
+    public Sprite newleverSprite; // 新しいレバーのスプライト
+    private SpriteRenderer leverimage; // レバーのスプライトレンダラー
+    private SpriteRenderer leverimage2; // もう一つのレバーのスプライトレンダラー
 
-    public Sprite newFlagSprite;
-    private SpriteRenderer flagimage;
-    //public Sprite newSaveSprite;
-    private Rigidbody2D otherRigidbody;
+    public Sprite newFlagSprite; // 新しいフラグのスプライト
+    private SpriteRenderer flagimage; // フラグのスプライトレンダラー
+    private Rigidbody2D otherRigidbody; // 他のオブジェクトのRigidbody2D
+
+    // 状態管理用のブール変数
     private bool Nextbool = false;
     private bool Next2bool = false;
     private bool Next3bool = false;
     private bool Next4bool = false;
     private bool Nexttutobool = false;
-    private bool isPause;
-    private bool Switchnext = false;
-    private bool PadClearSwitch = false;
-    public bool PlayerStop = false;
+    private bool isPause; // 一時停止状態
+    private bool Switchnext = false; // 次のステージへのスイッチ
+    private bool PadClearSwitch = false; // パッドクリアスイッチ
+    public bool PlayerStop = false; // プレイヤー停止フラグ
+
+    // BGMタイプ管理用の変数
     public BGMtype bgmtype;
+    
+    // シーン名の設定
     [SerializeField] public string sceneName1;
     [SerializeField] public string sceneName2;
     [SerializeField] public string sceneName3;
@@ -74,108 +83,121 @@ public class GameManager : MonoBehaviour
     [SerializeField] public string sceneNameClear;
     [SerializeField] public string sceneselection;
     [SerializeField] public string title;
+
+    // フェードエフェクト用の色と速度
     [SerializeField] public Color fadeColor;
     [SerializeField] public float fadeSpeed;
+
     private void Awake()
     {
-        if(Instance == null)
+        // シングルトンパターンの実装
+        if (Instance == null)
         {
             Instance = this;
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // 既存のインスタンスがある場合はこのオブジェクトを破棄
         }
     }
+
     void Start()
     {
+        // 初期設定
         if (floorMove != null)
         {
-            otherRigidbody = floorMove.rb;
+            otherRigidbody = floorMove.rb; // 移動床のRigidbody2Dを取得
         }
         if (lever != null)
         {
-            leverimage = lever.GetComponent<SpriteRenderer>();
+            leverimage = lever.GetComponent<SpriteRenderer>(); // レバーのスプライトレンダラーを取得
         }
         if (lever2 != null)
         {
-            leverimage2 = lever2.GetComponent<SpriteRenderer>();
+            leverimage2 = lever2.GetComponent<SpriteRenderer>(); // もう一つのレバーのスプライトレンダラーを取得
         }
 
+        // イベントの購読
         UnPauseEvent += StartBGM;
         UnPauseEvent += ChangePause;
         PauseEvent += PauseBGM;
         PauseEvent += ChangePause;
 
-        if(savePoint == null)
+        // セーブポイントの初期設定
+        if (savePoint == null)
         {
-            savePoint = flag;
+            savePoint = flag; // フラグがセーブポイントの場合
         }
         if (targetScript != null)
         {
-            targetScript.enabled = false;
+            targetScript.enabled = false; // ターゲットスクリプトを無効にする
         }
         if (targetScript2 != null)
         {
-            targetScript2.enabled = false;
+            targetScript2.enabled = false; // ターゲットスクリプト2を無効にする
         }
-        StartBGM();
+        StartBGM(); // BGMを開始
     }
 
+    // プレイヤーをセーブポイントにリスポーンさせるメソッド
     public void RespawnPlayer()
     {
         if (player != null && savePoint != null)
         {
-           player.transform.position = savePoint.transform.position;
+            player.transform.position = savePoint.transform.position; // プレイヤーの位置をセーブポイントに設定
         }
     }
 
+    // ゲームクリアシーンをロードするメソッド
     public void LoadClearScene()
     {
-        SceneManager.LoadScene("Clear");
+        SceneManager.LoadScene("Clear"); // クリアシーンをロード
     }
 
+    // 新しいセーブポイントを設定するメソッド
     public void SetSavePoint(GameObject newFlag)
     {
-       
-        savePoint = newFlag;
-        flagimage = savePoint.GetComponent<SpriteRenderer>();
-        flagimage.sprite = newFlagSprite;
+        savePoint = newFlag; // セーブポイントを更新
+        flagimage = savePoint.GetComponent<SpriteRenderer>(); // フラグのスプライトレンダラーを取得
+        flagimage.sprite = newFlagSprite; // 新しいスプライトに更新
     }
 
+    // ターゲットスクリプトを有効にするメソッド
     public void EnableTargetScript()
     {
         if (targetScript != null)
         {
-            targetScript.enabled = true;
+            targetScript.enabled = true; // ターゲットスクリプトを有効にする
         }
     }
 
+    // プレイヤーを移動ステージに親子関係を設定するメソッド
     public void ParentPlayerToMoveStage(Transform stage)
     {
-        player.transform.SetParent(stage);
+        player.transform.SetParent(stage); // プレイヤーを指定されたステージの子にする
     }
 
+    // プレイヤーの親子関係を解除し、速度をリセットするメソッド
     public void UnparentPlayerFromMoveStage()
     {
-        player.transform.SetParent(null);
-        otherRigidbody.velocity = Vector3.zero;
+        player.transform.SetParent(null); // プレイヤーの親子関係を解除
+        otherRigidbody.velocity = Vector3.zero; // Rigidbodyの速度をリセット
     }
 
+    // ドアを開けるメソッド
     public void OpenDoor()
     {
-        timer.audioSource.mute = true;
-        
-        soundManager.PauseSE(timer.audioSource);
-        soundManager.StopBGM();
-        SoundManager.Instance.PauseSE(audioSource);
-        StartClearBGM();
-        InvokeRepeating("PadClear", 0f, 0.1f);
-        Invoke("animatorBack", 0.8f);
-        Invoke("animatorNext", 1.0f);
-        Nextbool = true;
-        PlayerStop = true;
-        Invoke("SwitchNext", 2.0f);
+        timer.audioSource.mute = true; // タイマーのオーディオをミュート
+        soundManager.PauseSE(timer.audioSource); // タイマーのSEを一時停止
+        soundManager.StopBGM(); // BGMを停止
+        SoundManager.Instance.PauseSE(audioSource); // メインオーディオのSEを一時停止
+        StartClearBGM(); // クリアBGMを開始
+        InvokeRepeating("PadClear", 0f, 0.1f); // パッドクリアを一定間隔で呼び出し
+        Invoke("animatorBack", 0.8f); // アニメーターをバックさせる
+        Invoke("animatorNext", 1.0f); // 次のアニメーションを呼び出す
+        Nextbool = true; // 次の遷移フラグをセット
+        PlayerStop = true; // プレイヤー停止フラグをセット
+        Invoke("SwitchNext", 2.0f); // 次の遷移を2秒後に実行
     }
     public void GoolDoor()
     {
